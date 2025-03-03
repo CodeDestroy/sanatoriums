@@ -1,0 +1,108 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* .animated {
+    overflow: hidden; 
+    max-height: 0;
+    transition: all 0.6s ease; 
+    opacity: 0; 
+}
+
+.animated.visible {
+    max-height: 200px; 
+    opacity: 1; 
+}
+
+*/
+/* .hide {
+    display: none; 
+}  */
+
+
+/* Базовые стили */
+.animated {
+    overflow: hidden; /* Скрытие содержимого вне границ */
+    max-height: 0; /* Начальная высота */
+    opacity: 0; /* Прозрачность */
+    animation: none; /* Без анимации по умолчанию */
+}
+
+.animated.hide {
+    display: none;
+}
+
+.animated.visible {
+
+    animation: slide-down 0.8s ease forwards; /* Анимация появления */
+}
+
+.animated.hiding {
+    animation: slide-up 0.8s ease forwards; /* Анимация исчезновения */
+}
+
+/* Анимация появления сверху вниз */
+@keyframes slide-down {
+    0% {
+        max-height: 0;
+        opacity: 0;
+        transform: translateY(-20px); /* Легкий эффект появления сверху */
+        display: block !important;
+    }
+    100% {
+        max-height: 200px; /* Достаточная высота для контента */
+        opacity: 1;
+        transform: translateY(0);
+        display: block !important;
+    }
+}
+
+/* Анимация сворачивания снизу вверх */
+@keyframes slide-up {
+    0% {
+        max-height: 200px;
+        opacity: 1;
+        transform: translateY(0);
+        display: block !important;
+    }
+    100% {
+        max-height: 0;
+        opacity: 0;
+        transform: translateY(20px); /* Легкий эффект исчезновения вниз */
+        display: none !important;
+    }
+}
+
+@layer {
+    ol.nested {
+        counter-reset: item;
+    }
+
+    ol.nested li {
+        display: table;
+        margin-bottom: 0.5rem;
+    }
+
+    ol.nested li::before {
+        counter-increment: item;
+        content: counters(item, ".") ". ";
+        display: table-cell;
+        padding-right: 0.2rem;
+        color: #d43f2e;
+    }
+
+    .container > ol.nested > li::before {
+        font-weight: bold;
+    }
+}
+.underline-purple {
+    text-decoration: underline;
+    text-decoration-color: rgb(107 33 168 / var(--tw-text-opacity));
+    
+    text-decoration-thickness: 3px;
+}
+
+a.disabled {
+    pointer-events: none;
+    cursor: default;
+}
