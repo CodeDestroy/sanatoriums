@@ -37,7 +37,7 @@ import {
 const actions = [
   {
     title: 'Санатории',
-    href: '/education/courses/medicine',
+    href: '/',
     icon: HeartIcon,
     iconForeground: 'text-black',
     iconBackground: 'bg-white',
@@ -45,7 +45,7 @@ const actions = [
   },
   {
     title: 'Курорты',
-    href: '/education/courses/psychology',
+    href: '/',
     icon: PuzzlePieceIcon,
     iconForeground: 'text-black',
     iconBackground: '',
@@ -53,7 +53,7 @@ const actions = [
   },
   {
     title: 'Базы отдыха',
-    href: '/education/courses/specialists',
+    href: '/',
     icon: UserIcon,
     iconForeground: 'text-black',
     iconBackground: '',

@@ -58,7 +58,7 @@
                         </svg>
                     </button> --}}
                     @guest
-                        <div class="relative" x-data="{ expanded: false }" >
+                        {{-- <div class="relative" x-data="{ expanded: false }" >
                             <button 
                                 x-on:click="expanded = !expanded" 
                                 type="button" 
@@ -110,7 +110,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>                         
+                        </div>     --}}                     
                     @else
                         <div class="relative" x-data="{ expanded: false }" >
                             <button x-on:click="expanded = !expanded"  type="button" class="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900" aria-expanded="false">
@@ -211,9 +211,9 @@
                             </div>
                             @guest
                                 @if (Route::has('login'))
-                                    <div class="py-6">
+                                    {{-- <div class="py-6">
                                         <a href="{{ route('login') }}" class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">{{ __('Войти') }}</a>
-                                    </div>
+                                    </div> --}}
                                 @endif
                             @else
                                 
