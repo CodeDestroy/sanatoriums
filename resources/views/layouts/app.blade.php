@@ -255,7 +255,7 @@
                         <a href="{{ route('documents') }}" class="text-sm leading-6 text-gray-600 hover:text-gray-900">Документы</a>
                     </div> --}}
                 </nav>
-                <p class="mt-10 text-center text-xs leading-5 text-gray-500">&copy; 2025 АНО ДПО "ФОРУМ". Учёный кот. Все права защищены.</p>
+                <p class="mt-10 text-center text-xs leading-5 text-gray-500">&copy; 2025 ООО "Волшебная страна". Все права защищены.</p>
             </div>
         </footer> 
     </div>
