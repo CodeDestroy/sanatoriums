@@ -36,7 +36,7 @@ import {
 
 const actions = [
   {
-    title: 'Медицина',
+    title: 'Санатории',
     href: '/education/courses/medicine',
     icon: HeartIcon,
     iconForeground: 'text-black',
@@ -44,7 +44,7 @@ const actions = [
     blockBackground: 'bg-white'
   },
   {
-    title: 'Психология',
+    title: 'Курорты',
     href: '/education/courses/psychology',
     icon: PuzzlePieceIcon,
     iconForeground: 'text-black',
@@ -52,33 +52,9 @@ const actions = [
     blockBackground: 'bg-white'
   },
   {
-    title: 'Для специалистов',
+    title: 'Базы отдыха',
     href: '/education/courses/specialists',
     icon: UserIcon,
-    iconForeground: 'text-black',
-    iconBackground: '',
-    blockBackground: 'bg-rose-50'
-  },
-  {
-    title: 'Логопедия',
-    href: '/education/courses/speech',
-    icon: BookOpenIcon,
-    iconForeground: 'text-black',
-    iconBackground: '',
-    blockBackground: 'bg-white'
-  },
-  {
-    title: 'Для родителей',
-    href: '/education/courses/parents',
-    icon: UsersIcon,
-    iconForeground: 'text-black',
-    iconBackground: '',
-    blockBackground: 'bg-emerald-50',
-  },
-  {
-    title: 'Педагогика',
-    href: '/education/courses/pedagogy',
-    icon: AcademicCapIcon,
     iconForeground: 'text-black',
     iconBackground: '',
     blockBackground: 'bg-white'

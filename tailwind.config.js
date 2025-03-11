@@ -15,6 +15,19 @@ export default {
                 sans: ['Roboto Condensed', ...defaultTheme.fontFamily.sans],
             },
             colors: {
+                'forest-green': {
+                    '50': '#ecffe6',
+                    '100': '#d6fec9',
+                    '200': '#adfe98',
+                    '300': '#7bf95d',
+                    '400': '#4fef2c',
+                    '500': '#2dd50d',
+                    '600': '#1cab05',
+                    '700': '#1a890a',
+                    '800': '#19660e',
+                    '900': '#175611',
+                    '950': '#063003',
+                },
                 'salt': {
                     '50': '#faf9fa',
                     '100': '#f3f2f5',
