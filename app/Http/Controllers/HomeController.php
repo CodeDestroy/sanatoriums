@@ -81,28 +81,8 @@ class HomeController extends Controller
         return view('documents.agreement');
     }
     
-    public function kudryashova_17022025()
+    public function sanatoriums()
     {
-        return view('kudryashova_17022025');
-    }
-
-    public function kudryashova_25022025()
-    {
-        return view('kudryashova_25022025');
-    }
-
-    public function tretyakova_02032025()
-    {
-        return view('tretyakova_02032025');
-    }
-
-    public function tretyakova_15032025()
-    {
-        return view('tretyakova_15032025');
-    }
-
-    public function turkenich_nakonechnaya_17042025()
-    {
-        return view('turkenich_nakonechnaya_17042025');
+        return view('sanatoriums');
     }
 }
