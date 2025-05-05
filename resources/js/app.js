@@ -10,32 +10,27 @@ Alpine.start();
 const fullConfig = resolveConfig(tailwindConfig)
 
 import { createApp } from 'vue';
-/* import ThreeTiersWithEmphasizedTier from './components/ThreeTiersWithEmphasizedTier.vue';
-import Calendar from './components/Calendar.vue';
- 
+import { jsPDF } from "jspdf";
+import html2canvas from "html2canvas";
+import WithExpandableProductFilterPanel from './components/sanatoriums/WithExpandableProductFilterPanel.vue'
+import CardWithFullDetails from './components/sanatoriums/CardWithFullDetails.vue'
+import WithInlinePrice from './components/sanatoriums/WithInlinePrice.vue'
+import WithImageGalleryAndExpandableDetails from './components/sanatoriums/WithImageGalleryAndExpandableDetails.vue'
+createApp({})
+.component('WithExpandableProductFilterPanel', WithExpandableProductFilterPanel)
+.mount('#with-expandable-product-filter-panel')
 
-createApp({
-  components: {
-    ThreeTiersWithEmphasizedTier,
-  }
-}).mount('#calendar');
-createApp({
-  components: {
-    Calendar,
-  }
-}).mount('#price');
-createApp({
-  components: {
-    Plan,
-  }
-}).mount('#plan'); */
-/* createApp({})
-  .component('ThreeTiersWithEmphasizedTier', ThreeTiersWithEmphasizedTier)
-  .mount('#price') */
+createApp({})
+.component('WithInlinePrice', WithInlinePrice)
+.mount('#with-inline-price')
 
-/*   createApp({})
-  .component('Calendar', Calendar)
-  .mount('#calendar')  */ 
+createApp({})
+.component('CardWithFullDetails', CardWithFullDetails)
+.mount('#card-with-full-details')
+
+createApp({})
+.component('WithImageGalleryAndExpandableDetails', WithImageGalleryAndExpandableDetails)
+.mount('#with-image-gallery-and-expandable-details')
 
 import ThreeTiersWithEmphasizedTier from './components/ThreeTiersWithEmphasizedTier.vue';
 import Calendar from './components/Calendar.vue';
@@ -47,8 +42,6 @@ import Policy from './components/Policy.vue';
 import Agreement from './components/Agreement.vue';
 import Offer from './components/Offer.vue';
 import Contract from './components/Contract.vue';
-import { jsPDF } from "jspdf";
-import html2canvas from "html2canvas";
 import AskQuestion from './components/AskQuestion.vue';
 import WithLargeAvatar from './components/WithLargeAvatar.vue';
 import SideBySideGrid from './components/SidebySideGrid.vue';
@@ -120,7 +113,6 @@ createApp({})
 createApp({})
 .component('Cards', Cards)
 .mount('#cards')
-
 document.getElementById('generate-pdf')?.addEventListener('click', function () {
 /*   const { jsPDF } = window.jspdf; */
 

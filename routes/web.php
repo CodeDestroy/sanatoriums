@@ -42,6 +42,10 @@ Route::controller(App\Http\Controllers\HomeController::class)->group(function ()
     Route::get('/sanatoriums', 'sanatoriums')->name('sanatoriums');
 }); 
 
+Route::controller(App\Http\Controllers\SanatoriumsController::class)->group(function () {
+    Route::get('/sanatorium/{sanatorium_id}', 'showSanatorium')->name('sanatoriums.sanatoriy');
+    
+}); 
 
 //Роут на получение всех эвенов 
 /* Route::get('/api/events', function (Request $request) {

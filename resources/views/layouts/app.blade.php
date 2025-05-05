@@ -74,11 +74,11 @@
                                         <p class="mt-1 text-gray-600">Get a better understanding of your traffic</p>
                                     </div>
                                 </div> --}}
-                                <a href="#" class="block p-2 rounded hover:bg-gray-100 text-sm text-gray-900 font-medium">Юг России</a>
-                                <a href="#" class="block p-2 rounded hover:bg-gray-100 text-sm text-gray-900 font-medium">Крым</a>
+                                <a href="sanatoriums" class="block p-2 rounded hover:bg-gray-100 text-sm text-gray-900 font-medium">Юг России</a>
+                                {{-- <a href="#" class="block p-2 rounded hover:bg-gray-100 text-sm text-gray-900 font-medium">Крым</a>
                                 <a href="#" class="block p-2 rounded hover:bg-gray-100 text-sm text-gray-900 font-medium">КМВ</a>
                                 <a href="#" class="block p-2 rounded hover:bg-gray-100 text-sm text-gray-900 font-medium">Центральный регион</a>
-                                <a href="#" class="block p-2 rounded hover:bg-gray-100 text-sm text-gray-900 font-medium">Беларусь</a>
+                                <a href="#" class="block p-2 rounded hover:bg-gray-100 text-sm text-gray-900 font-medium">Беларусь</a> --}}
                             </div>
                         </div>
                     </div>
@@ -150,7 +150,7 @@
                 </div>
             
                 <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-                    @guest
+                    {{-- @guest
                     <div class="relative" x-data="{ expanded: false }" >
                         <button 
                             x-on:click="expanded = !expanded" 
@@ -269,7 +269,7 @@
                                 
                             </div>
                         </div>
-                    @endguest
+                    @endguest --}}
                 </div>
             </nav>
         
@@ -299,30 +299,46 @@
                             </button>
                             <div x-show="subOpen" x-transition class="space-y-2 mt-2 pl-4">
                                 <a href="#" class="block text-sm font-medium text-gray-900 hover:bg-gray-50 rounded px-3 py-2">Юг России</a>
-                                <a href="#" class="block text-sm font-medium text-gray-900 hover:bg-gray-50 rounded px-3 py-2">Engagement</a>
-                                <a href="#" class="block text-sm font-medium text-gray-900 hover:bg-gray-50 rounded px-3 py-2">Security</a>
-                                <a href="#" class="block text-sm font-medium text-gray-900 hover:bg-gray-50 rounded px-3 py-2">Integrations</a>
-                                <a href="#" class="block text-sm font-medium text-gray-900 hover:bg-gray-50 rounded px-3 py-2">Automations</a>
                             </div>
                         </div>
                 
+                        <div x-data="{ subOpen: false }" class="px-3">
+                            <button @click="subOpen = !subOpen" class="w-full flex justify-between items-center text-base font-semibold text-gray-900 py-2">
+                                Индивидуальный подбор туров
+                                <svg :class="{ 'rotate-180': subOpen }" class="h-5 w-5 transition-transform" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.17l3.71-3.94a.75.75 0 011.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0L5.23 8.27a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+                                </svg>
+                            </button>
+                            <div x-show="subOpen" x-transition class="space-y-2 mt-2 pl-4">
+                                <a href="#" class="block text-sm font-medium text-gray-900 hover:bg-gray-50 rounded px-3 py-2">Сан. курортная карта</a>
+                                <a href="#" class="block text-sm font-medium text-gray-900 hover:bg-gray-50 rounded px-3 py-2">ТМК</a>
+                                <a href="#" class="block text-sm font-medium text-gray-900 hover:bg-gray-50 rounded px-3 py-2">Оставить заявку</a>
+                            </div>
+                        </div>
+                        <div x-data="{ subOpen: false }" class="px-3">
+                            <button @click="subOpen = !subOpen" class="w-full flex justify-between items-center text-base font-semibold text-gray-900 py-2">
+                                Отдыхающим
+                                <svg :class="{ 'rotate-180': subOpen }" class="h-5 w-5 transition-transform" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.17l3.71-3.94a.75.75 0 011.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0L5.23 8.27a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+                                </svg>
+                            </button>
+                            <div x-show="subOpen" x-transition class="space-y-2 mt-2 pl-4">
+                                <a href="#" class="block text-sm font-medium text-gray-900 hover:bg-gray-50 rounded px-3 py-2">Совет эксперта</a>
+                                <a href="#" class="block text-sm font-medium text-gray-900 hover:bg-gray-50 rounded px-3 py-2">ТМК</a>
+                            </div>
+                        </div>
                         <div class="mt-2 space-y-2">
-                            <a href="#" class="block text-base font-semibold text-gray-900 hover:bg-gray-50 rounded px-3 py-2">Features</a>
-                            <a href="#" class="block text-base font-semibold text-gray-900 hover:bg-gray-50 rounded px-3 py-2">Marketplace</a>
-                            <a href="#" class="block text-base font-semibold text-gray-900 hover:bg-gray-50 rounded px-3 py-2">Company</a>
+                            <a href="{{ url('/contacts') }}" class="block text-base font-semibold text-gray-900 hover:bg-gray-50 rounded px-3 py-2">Контакты</a>
                         </div>
                 
                         <div class="mt-6">
-                            @guest
+                            {{-- @guest
                                 @if (Route::has('login'))
                                     <div class="py-6">
                                         <a href="{{ route('login') }}" class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">{{ __('Log in') }}</a>
                                     </div>
                                 @endif
                             @else
-                                
-                                {{-- <a href="{{ route('settings.general') }}" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">{{ Auth::user()->name }}</a>
-                                 --}}
                                 @if (Auth::user()->hasAnyAccess(['platform.*'])) 
                                     <a href="{{ route('platform.index') }}" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Админка</a>
                                 @endif
@@ -330,7 +346,7 @@
                                     class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
                                     {{ __('Log out') }}
                                 </a>
-                            @endguest
+                            @endguest --}}
                         </div>
                     </div>
                 </div>
@@ -352,7 +368,11 @@
                     <div class="pb-6">
                         <a href="{{ route('sanatoriums') }}" class="text-sm leading-6 text-gray-600 hover:text-gray-900">Санатории</a>
                     </div>
-                    
+                    <div class="pb-6">
+                        <a href="" class="text-sm leading-6 text-gray-600 hover:text-gray-900">Индивидуальный подбор туров</a>
+                    </div><div class="pb-6">
+                        <a href="" class="text-sm leading-6 text-gray-600 hover:text-gray-900">Отдыхающим</a>
+                    </div>
                     <div class="pb-6">
                         <a href="{{ url('/contacts') }}" class="text-sm leading-6 text-gray-600 hover:text-gray-900">Контакты</a>
                     </div>
