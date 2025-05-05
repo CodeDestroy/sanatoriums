@@ -31,8 +31,8 @@
         <header class="bg-white" x-data="{ open: false, productOpen: false }" @keydown.window.escape="open = false; productOpen = false">
             <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
                 <div class="flex lg:flex-1">
-                    <a href="#" class="-m-1.5 p-1.5">
-                        <span class="sr-only">Your Company</span>
+                    <a href="/" class="-m-1.5 p-1.5">
+                        <span class="sr-only">Волшебная страна</span>
                         <img class="h-16 sm:h-18 w-auto" src="{{ asset('img/zr_tour_logo.svg') }}" alt="">
                     </a>
                 </div>
@@ -278,7 +278,7 @@
                 <div class="fixed inset-0 z-10 bg-black bg-opacity-25" @click="open = false"></div>
                 <div class="fixed inset-y-0 right-0 z-20 w-full max-w-sm bg-white px-6 py-6 overflow-y-auto">
                     <div class="flex items-center justify-between">
-                        <a href="#" class="-m-1.5 p-1.5">
+                        <a href="/" class="-m-1.5 p-1.5">
                             <img class="h-16 sm:h-18 w-auto" src="{{ asset('img/zr_tour_logo.svg') }}" alt="">
                         </a>
                         <button @click="open = false" type="button" class="-m-2.5 rounded-md p-2.5 text-gray-700">
