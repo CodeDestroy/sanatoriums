@@ -23,15 +23,14 @@ Route::get('/pdf/{filename}', function ($filename) {
 });
 //Роуты основных страниц
 Route::controller(App\Http\Controllers\HomeController::class)->group(function () {
-    /* Route::get('/vizel', 'index')->name('vizel'); */
     Route::get('/', 'index')->name('home');
-    Route::get('/kudryashova_17022025', 'kudryashova_17022025')->name('kudryashova_17022025');
+    /* Route::get('/kudryashova_17022025', 'kudryashova_17022025')->name('kudryashova_17022025');
     Route::get('/kudryashova_25022025', 'kudryashova_25022025')->name('kudryashova_25022025');
     Route::get('/tretyakova_02032025', 'tretyakova_02032025')->name('tretyakova_02032025');
     Route::get('/tretyakova_15032025', 'tretyakova_15032025')->name('tretyakova_15032025');
     Route::get('/turkenich_nakonechnaya_17042025', 'turkenich_nakonechnaya_17042025')->name('turkenich_nakonechnaya_17042025');
     Route::get('/kurbatov', 'kurbatov')->name('kurbatov');
-    Route::get('/nikolaeva', 'nikolaeva')->name('nikolaeva');
+    Route::get('/nikolaeva', 'nikolaeva')->name('nikolaeva'); */
     Route::get('/contacts', 'contacts')->name('contacts');
     Route::get('/about', 'about')->name('about');
     Route::get('/docs', function (Request $request) { return redirect()->route('documents.offer'); })->name('documents');
@@ -40,11 +39,16 @@ Route::controller(App\Http\Controllers\HomeController::class)->group(function ()
     Route::get('/docs/privacy', 'privacy')->name('documents.privacy');
     Route::get('/docs/policy', 'policy')->name('documents.policy');
     Route::get('/docs/agreement', 'agreement')->name('documents.agreement');
+    Route::get('/sanatoriums', 'sanatoriums')->name('sanatoriums');
 }); 
 
+Route::controller(App\Http\Controllers\SanatoriumsController::class)->group(function () {
+    Route::get('/sanatorium/{sanatorium_id}', 'showSanatorium')->name('sanatoriums.sanatoriy');
+    
+}); 
 
 //Роут на получение всех эвенов 
-Route::get('/api/events', function (Request $request) {
+/* Route::get('/api/events', function (Request $request) {
     $date = $request->query('date');
     $user = $request->user();
     
@@ -65,10 +69,10 @@ Route::get('/api/events', function (Request $request) {
                 ->orderBy('start_time')
                 ->get();
     }
-});
+}); */
 
 //Роут на получение эвенов по курсу
-Route::get('/api/course/{course_id}/events', function (Request $request, $course_id) {
+/* Route::get('/api/course/{course_id}/events', function (Request $request, $course_id) {
     $date = $request->query('date');
     $user = $request->user();
     $permissions = $user->permissions()->get();
@@ -89,9 +93,9 @@ Route::get('/api/course/{course_id}/events', function (Request $request, $course
                         ->get();
         }
 });
-
+ */
 //Роут на получение всех занятых эвентами дней по курсу
-Route::get('/api/days', function (Request $request) {
+/* Route::get('/api/days', function (Request $request) {
     $date = $request->query('date');
     $dateObject = Carbon::createFromFormat('Y-m-d', $date);
 
@@ -106,10 +110,10 @@ Route::get('/api/days', function (Request $request) {
         ->distinct()
         ->pluck('start_date');
     return $uniqueDates;
-});
+}); */
 
 //Роут на получение занятых эвентами дней по курсу
-Route::get('/api/course/{course_id}/days', function (Request $request, $course_id) {
+/* Route::get('/api/course/{course_id}/days', function (Request $request, $course_id) {
     $date = $request->query('date');
     $dateObject = Carbon::createFromFormat('Y-m-d', $date);
 
@@ -125,10 +129,10 @@ Route::get('/api/course/{course_id}/days', function (Request $request, $course_i
         ->distinct()
         ->pluck('start_date');
     return $uniqueDates;
-});
+}); */
 
 //Обучение
-Route::controller(App\Http\Controllers\EducationController::class)->group(function () {
+/* Route::controller(App\Http\Controllers\EducationController::class)->group(function () {
     Route::get('/education', 'showCourses')->name('education.index')->middleware(['auth', 'verified']);
     
     
@@ -148,9 +152,9 @@ Route::controller(App\Http\Controllers\EducationController::class)->group(functi
     Route::post('/education/course/{course_id}/askQuestion/theme/{theme_id}','askQuestion')->name('education.askQuestion')->middleware(['auth', 'verified', 'paid']);
     Route::get('/education/registerCourse/{course_id}', 'registerCourse')->name('registerCourse')->middleware(['auth', 'verified']);
 
-});
+}); */
 //Платежи
-Route::controller(App\Http\Controllers\PaymentController::class)->group(function () {
+/* Route::controller(App\Http\Controllers\PaymentController::class)->group(function () {
    
     Route::get('/payment/success/{course}/{sum}/{freq}', 'success')->name('payment.success')->middleware(['auth', 'verified']);
     Route::get('/payment/fail/{course}/{sum}/{freq}', 'fail')->name('payment.fail')->middleware(['auth', 'verified']);
@@ -159,13 +163,7 @@ Route::controller(App\Http\Controllers\PaymentController::class)->group(function
     Route::get('/payment/enterprise/{course}/{freq}/{sum}', 'enterprise')->name('payment.enterprise')->middleware(['auth', 'verified']);
     Route::get('/payment/students/{course}/{freq}/{price}', 'student')->name('payment.student')->middleware(['auth', 'verified']);
     Route::get('/payment/{tier}/{course}/{freq}/{price}', 'index')->name('payment.index')->middleware(['auth', 'verified']);
-});
-
-
-/* Route::get('/', function () {
-    return view('home');
 }); */
-
 
 //Подтверждение почты
 Route::get('/email/verify', function (Request $request) {
@@ -210,12 +208,12 @@ Route::get('/reset-password/{token}', function (string $token, Request $request)
 })->middleware('guest')->name('password.reset');
 
 //Роуты для документов
-Route::controller(App\Http\Controllers\UserDocumentController::class)->group(function () {
+/* Route::controller(App\Http\Controllers\UserDocumentController::class)->group(function () {
     Route::get('/user/{user}/document/{type}', 'index')->name('showDocument')->middleware(['auth', 'verified']);
-});
+}); */
 
 //Роуты для профиля
-Route::controller(App\Http\Controllers\ProfileController::class)->group(function () {
+/* Route::controller(App\Http\Controllers\ProfileController::class)->group(function () {
     Route::get('/settings', 'index')->name('settings.general')->middleware(['auth', 'verified']);
     Route::get('/settings/security', 'security')->name('settings.security')->middleware(['auth', 'verified']);
     Route::get('/settings/documents', 'documents')->name('settings.documents')->middleware(['auth', 'verified']);
@@ -251,5 +249,5 @@ Route::controller(App\Http\Controllers\ProfileController::class)->group(function
 
     Route::get('/profile', 'profile')->name('profile.general')->middleware(['auth', 'verified']);
     Route::post('/profile/registerSecond', 'registerSecond')->name('profile.registerSecond')->middleware(['auth', 'verified']);
-});
+}); */
 

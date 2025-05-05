@@ -37,7 +37,7 @@ import {
 const actions = [
   {
     title: 'Санатории',
-    href: '/',
+    href: '/sanatoriums',
     icon: HeartIcon,
     iconForeground: 'text-black',
     iconBackground: 'bg-white',

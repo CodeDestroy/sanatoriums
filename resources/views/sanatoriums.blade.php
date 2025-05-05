@@ -1,0 +1,196 @@
+@extends('layouts.app')
+
+@section('content')
+
+
+<div id="with-expandable-product-filter-panel">
+    <with-expandable-product-filter-panel/>
+</div>
+
+{{-- <div id="with-inline-price">
+    <with-inline-price/>
+</div> --}}
+
+<div id="card-with-full-details">
+    <card-with-full-details/>
+</div>
+{{-- <section class="regions mt-5">
+	<div class="mx-auto max-w-7xl  lg:flex lg:items-center lg:justify-between pb-8  px-6  sm:py-15 lg:px-8">
+        <h1 class="text-left text-black md:text-5xl sm:text-4xl text-4xl">
+            <span>Регионы</span>
+        </h1>
+    </div>
+    <div class="grid  gap-4  mx-auto max-w-7xl px-6 py-4  lg:items-center lg:px-8 sm:grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 grid-cols-1 ">
+        <div class="card card-side bg-base-100 shadow-sm">
+            <figure>
+                <img class="h-48 w-96 object-scale-down " 
+                src="img/test-1.jpg"
+                alt="Movie" />
+            </figure>
+            <div class="card-body">
+                <h2 class="card-title">Астраханская область</h2>
+                <p>сочетание активного отдыха и лечебных программ</p>
+                <div class="card-actions justify-end">
+                    <button class="btn btn-primary">Подробнее</button>
+                </div>
+            </div>
+        </div>
+        <div class="card card-side bg-base-100 shadow-sm">
+            <figure>
+                <img class="h-48 w-96 object-scale-down " 
+                src="img/test-1.jpg"
+                alt="Movie" />
+            </figure>
+            <div class="card-body">
+                <h2 class="card-title">Астраханская область</h2>
+                <p>сочетание активного отдыха и лечебных программ</p>
+                <div class="card-actions justify-end">
+                    <button class="btn btn-primary">Подробнее</button>
+                </div>
+            </div>
+        </div>
+    <div class="card card-side bg-base-100 shadow-sm">
+    <figure>
+        <img class="h-48 w-96 object-scale-down " 
+        src="img/test-1.jpg"
+        alt="Movie" />
+    </figure>
+    <div class="card-body">
+        <h2 class="card-title">Астраханская область</h2>
+        <p>сочетание активного отдыха и лечебных программ</p>
+        <div class="card-actions justify-end">
+            <button class="btn btn-primary">Подробнее</button>
+        </div>
+    </div>
+</div>
+<div class="card card-side bg-base-100 shadow-sm">
+    <figure>
+        <img class="h-48 w-96 object-scale-down " 
+        src="img/test-1.jpg"
+        alt="Movie" />
+    </figure>
+    <div class="card-body">
+        <h2 class="card-title">Астраханская область</h2>
+        <p>сочетание активного отдыха и лечебных программ</p>
+        <div class="card-actions justify-end">
+            <button class="btn btn-primary">Подробнее</button>
+        </div>
+    </div>
+</div>
+<div class="card card-side bg-base-100 shadow-sm">
+    <figure>
+        <img class="h-48 w-96 object-scale-down " 
+        src="img/test-1.jpg"
+        alt="Movie" />
+    </figure>
+    <div class="card-body">
+        <h2 class="card-title">Астраханская область</h2>
+        <p>сочетание активного отдыха и лечебных программ</p>
+        <div class="card-actions justify-end">
+            <button class="btn btn-primary">Подробнее</button>
+        </div>
+    </div>
+</div>
+<div class="card card-side bg-base-100 shadow-sm">
+    <figure>
+        <img class="h-48 w-96 object-scale-down " 
+        src="img/test-1.jpg"
+        alt="Movie" />
+    </figure>
+    <div class="card-body">
+        <h2 class="card-title">Астраханская область</h2>
+        <p>сочетание активного отдыха и лечебных программ</p>
+        <div class="card-actions justify-end">
+            <button class="btn btn-primary">Подробнее</button>
+        </div>
+    </div>
+</div>
+<div class="card card-side bg-base-100 shadow-sm">
+    <figure>
+        <img class="h-48 w-96 object-scale-down " 
+        src="img/test-1.jpg"
+        alt="Movie" />
+    </figure>
+    <div class="card-body">
+        <h2 class="card-title">Астраханская область</h2>
+        <p>сочетание активного отдыха и лечебных программ</p>
+        <div class="card-actions justify-end">
+            <button class="btn btn-primary">Подробнее</button>
+        </div>
+    </div>
+</div>
+<div class="card card-side bg-base-100 shadow-sm">
+    <figure>
+        <img class="h-48 w-96 object-scale-down " 
+        src="img/test-1.jpg"
+        alt="Movie" />
+    </figure>
+    <div class="card-body">
+        <h2 class="card-title">Астраханская область</h2>
+        <p>сочетание активного отдыха и лечебных программ</p>
+        <div class="card-actions justify-end">
+            <button class="btn btn-primary">Подробнее</button>
+        </div>
+    </div>
+</div>
+<div class="card card-side bg-base-100 shadow-sm">
+    <figure>
+        <img class="h-48 w-96 object-scale-down " 
+        src="img/test-1.jpg"
+        alt="Movie" />
+    </figure>
+    <div class="card-body">
+        <h2 class="card-title">Астраханская область</h2>
+        <p>сочетание активного отдыха и лечебных программ</p>
+        <div class="card-actions justify-end">
+            <button class="btn btn-primary">Подробнее</button>
+        </div>
+    </div>
+</div>
+    </div>
+</section> --}}
+
+<section class="mt-5">  <!-- Секция новостей -->
+    <div class="mx-auto max-w-7xl  lg:flex lg:items-center lg:justify-between pb-8  px-6  sm:py-15 lg:px-8">
+        <h1 class="text-left text-black md:text-5xl sm:text-4xl text-4xl">
+            <span>Новости</span>
+        </h1>
+    </div>
+    <div class="grid  gap-6  mx-auto max-w-7xl px-6  sm:py-6  lg:items-center lg:px-8 sm:grid-cols-1 md:grid-cols-3">
+        <div class="mb-3 mx-auto">
+            <figure class="relative max-w-sm transition-all duration-300 cursor-pointer">
+                <a href="#">
+                    <img class="rounded-lg" src="img/test-1.jpg" alt="image description">
+                </a>
+                <figcaption class="absolute px-4  bottom-6">
+                    <p class="text-white font-medium text-s mb-1">1 мая 2025</p>
+                    <p class="text-xl text-white mb-3 font-bold">Акции и скидки<br> от туроператора</p>
+                </figcaption>
+            </figure>
+        </div>
+        <div class="mb-3 mx-auto">
+            <figure class="relative max-w-sm transition-all duration-300 cursor-pointer">
+                <a href="#">
+                    <img class="rounded-lg" src="img/test-1.jpg" alt="image description">
+                </a>
+                <figcaption class="absolute px-4  bottom-6">
+                    <p class="text-white font-medium text-s mb-1">1 мая 2025</p>
+                    <p class="text-xl text-white mb-3 font-bold">Акции и скидки<br> от туроператора</p>
+                </figcaption>
+            </figure>
+        </div>
+        <div class="mb-3 mx-auto">
+            <figure class="relative max-w-sm transition-all duration-300 cursor-pointer">
+                <a href="#">
+                    <img class="rounded-lg" src="img/test-1.jpg" alt="image description">
+                </a>
+                <figcaption class="absolute px-4  bottom-6">
+                    <p class="text-white font-medium text-s mb-1">1 мая 2025</p>
+                    <p class="text-xl text-white mb-3 font-bold">Акции и скидки<br> от туроператора</p>
+                </figcaption>
+            </figure>
+        </div>
+   </div>
+</section>
+
+@endsection

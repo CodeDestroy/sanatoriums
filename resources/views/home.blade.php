@@ -26,7 +26,7 @@
                         </div>
                     </dt>
                     <dd class="mt-1 flex flex-auto flex-col text-base leading-7 text-gray-600">
-                        <p class="flex-auto">Внимательное отношение/p>
+                        <p class="flex-auto">Внимательное отношение</p>
                     </dd>
                 </div>
                 <div class="flex flex-col">
