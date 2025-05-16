@@ -9,7 +9,37 @@
 <div id="gridlist">
     <grid-list />
 </div>
-  
+  <div class="my-10">
+    <div class="w-full max-w-5xl mx-auto mt-10 px-4">
+        <div class="flex flex-col md:flex-row bg-white rounded-xl shadow-md overflow-hidden border border-gray-300">
+          
+          <!-- Название курорта или отеля -->
+          <input type="text" placeholder="Название курорта или отеля"
+                 class="flex-1 px-4 py-3 text-sm text-gray-700 placeholder-gray-500 focus:outline-none border-b md:border-b-0 md:border-r border-gray-300"/>
+      
+          <!-- Даты -->
+          <div class="flex items-center px-4 py-3 text-sm text-gray-700 border-b md:border-b-0 md:border-r border-gray-300">
+            <svg class="w-5 h-5 text-green-600 mr-2" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M6 2a1 1 0 000 2h1v1a1 1 0 102 0V4h2v1a1 1 0 102 0V4h1a1 1 0 100-2h-1V1a1 1 0 10-2 0v1H9V1a1 1 0 10-2 0v1H6zM3 7a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V7zm2 0v8h10V7H5z"/>
+            </svg>
+            17.05.2025 - 31.05.2025
+          </div>
+      
+          <!-- Гости -->
+          <div class="flex items-center px-4 py-3 text-sm text-gray-700 border-b md:border-b-0 md:border-r border-gray-300">
+            2 взрослых <span class="text-gray-400 ml-1">0 детей</span>
+            <svg class="w-4 h-4 ml-2 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </div>
+      
+          <!-- Кнопка -->
+          <button class="bg-green-600 hover:bg-green-700 text-white text-sm font-medium px-6 py-3 w-full md:w-auto">
+            Найти
+          </button>
+        </div>
+      </div>
+  </div>
 <div class="bg-gray-100 py-24 sm:py-32"  id='dopObr'{{-- style="height: 100vh;" --}}>
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
         <div class="mx-auto max-w-2xl lg:mx-0">
