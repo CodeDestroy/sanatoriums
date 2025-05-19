@@ -49,7 +49,7 @@
           </div>
           <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:col-span-2 lg:gap-8">
             <div class="rounded-2xl bg-gray-50 p-10">
-              <h3 class="text-base font-semibold leading-7 text-gray-900">ООО "Здоровый ребенок"</h3>
+              <h3 class="text-base font-semibold leading-7 text-gray-900">ООО «ВОЛШЕБНАЯ СТРАНА"</h3>
               <address class="mt-3 space-y-1 text-sm not-italic leading-6 text-gray-600">
                 <p>394077, Воронеж</p>
                 <p>ул. Генерала Лизюкова, д. 24</p>

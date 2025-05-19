@@ -147,6 +147,34 @@
                     </div>
                     <a href="{{ url('/contacts') }}" class="text-sm font-semibold leading-6 text-gray-900">Контакты</a>
                     
+                    <div class="hidden lg:flex lg:gap-x-3">
+                        <a href="https://vk.com/brain_cat" class="hidden sm:block pt-1.5 border-transparent focus:border-transparent focus:ring-0">
+                            <span class="[&>svg]:h-7 [&>svg]:w-7">
+                                <svg
+                                    class="fill-red-700 hover:fill-red-700"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 448 512">
+                                    <path
+                                    d="M31.5 63.5C0 95 0 145.7 0 247V265C0 366.3 0 417 31.5 448.5C63 480 113.7 480 215 480H233C334.3 480 385 480 416.5 448.5C448 417 448 366.3 448 265V247C448 145.7 448 95 416.5 63.5C385 32 334.3 32 233 32H215C113.7 32 63 32 31.5 63.5zM75.6 168.3H126.7C128.4 253.8 166.1 290 196 297.4V168.3H244.2V242C273.7 238.8 304.6 205.2 315.1 168.3H363.3C359.3 187.4 351.5 205.6 340.2 221.6C328.9 237.6 314.5 251.1 297.7 261.2C316.4 270.5 332.9 283.6 346.1 299.8C359.4 315.9 369 334.6 374.5 354.7H321.4C316.6 337.3 306.6 321.6 292.9 309.8C279.1 297.9 262.2 290.4 244.2 288.1V354.7H238.4C136.3 354.7 78 284.7 75.6 168.3z" />
+                                </svg>
+                                </span>
+                            </a>
+                        <a href="https://t.me/+Rvqt2hkAZKMwZDFi" class="hidden sm:block pt-1.5 border-transparent focus:border-transparent focus:ring-0">
+                            <span class="[&amp;>svg]:h-7 [&amp;>svg]:w-7">
+                                <svg class="fill-red-700 hover:fill-red-700" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
+                                    <path d="M248 8C111 8 0 119 0 256S111 504 248 504 496 393 496 256 385 8 248 8zM363 176.7c-3.7 39.2-19.9 134.4-28.1 178.3-3.5 18.6-10.3 24.8-16.9 25.4-14.4 1.3-25.3-9.5-39.3-18.7-21.8-14.3-34.2-23.2-55.3-37.2-24.5-16.1-8.6-25 5.3-39.5 3.7-3.8 67.1-61.5 68.3-66.7 .2-.7 .3-3.1-1.2-4.4s-3.6-.8-5.1-.5q-3.3 .7-104.6 69.1-14.8 10.2-26.9 9.9c-8.9-.2-25.9-5-38.6-9.1-15.5-5-27.9-7.7-26.8-16.3q.8-6.7 18.5-13.7 108.4-47.2 144.6-62.3c68.9-28.6 83.2-33.6 92.5-33.8 2.1 0 6.6 .5 9.6 2.9a10.5 10.5 0 0 1 3.5 6.7A43.8 43.8 0 0 1 363 176.7z"></path>
+                                </svg>
+                                </span>
+                            </a>
+                        <button class="focus:outline-none text-white font-somebold  bg-red-700 hover:bg-red-700 focus:ring-4 focus:ring-red-300 rounded-lg
+                         text-sm px-4 py-2   dark:bg-red-700 dark:hover:bg-red-700 dark:focus:ring-red-700">
+                           Войти
+                        </button>
+                        <button class="focus:outline-none text-white bg-red-700 hover:bg-red-70 font-somebold0 focus:ring-4 focus:ring-red-300  rounded-lg
+                         text-sm px-4 py-2  dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-700">
+                            Регистрация
+                        </button>
+                    </div>
                 </div>
             
                 <div class="hidden lg:flex lg:flex-1 lg:justify-end">
@@ -331,8 +359,37 @@
                             <a href="{{ url('/contacts') }}" class="block text-base font-semibold text-gray-900 hover:bg-gray-50 rounded px-3 py-2">Контакты</a>
                         </div>
                         
+
                         
                         <div class="mt-6">
+                            
+                            <a href="https://vk.com/brain_cat" class="hidden sm:block pt-1.5 border-transparent focus:border-transparent focus:ring-0">
+                                <span class="[&>svg]:h-7 [&>svg]:w-7">
+                                    <svg
+                                        class="fill-red-700 hover:fill-red-700"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 448 512">
+                                        <path
+                                        d="M31.5 63.5C0 95 0 145.7 0 247V265C0 366.3 0 417 31.5 448.5C63 480 113.7 480 215 480H233C334.3 480 385 480 416.5 448.5C448 417 448 366.3 448 265V247C448 145.7 448 95 416.5 63.5C385 32 334.3 32 233 32H215C113.7 32 63 32 31.5 63.5zM75.6 168.3H126.7C128.4 253.8 166.1 290 196 297.4V168.3H244.2V242C273.7 238.8 304.6 205.2 315.1 168.3H363.3C359.3 187.4 351.5 205.6 340.2 221.6C328.9 237.6 314.5 251.1 297.7 261.2C316.4 270.5 332.9 283.6 346.1 299.8C359.4 315.9 369 334.6 374.5 354.7H321.4C316.6 337.3 306.6 321.6 292.9 309.8C279.1 297.9 262.2 290.4 244.2 288.1V354.7H238.4C136.3 354.7 78 284.7 75.6 168.3z" />
+                                    </svg>
+                                    </span>
+                                </a>
+                            <a href="https://t.me/+Rvqt2hkAZKMwZDFi" class="hidden sm:block pt-1.5 border-transparent focus:border-transparent focus:ring-0">
+                                <span class="[&amp;>svg]:h-7 [&amp;>svg]:w-7">
+                                    <svg class="fill-red-700 hover:fill-red-700" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
+                                        <path d="M248 8C111 8 0 119 0 256S111 504 248 504 496 393 496 256 385 8 248 8zM363 176.7c-3.7 39.2-19.9 134.4-28.1 178.3-3.5 18.6-10.3 24.8-16.9 25.4-14.4 1.3-25.3-9.5-39.3-18.7-21.8-14.3-34.2-23.2-55.3-37.2-24.5-16.1-8.6-25 5.3-39.5 3.7-3.8 67.1-61.5 68.3-66.7 .2-.7 .3-3.1-1.2-4.4s-3.6-.8-5.1-.5q-3.3 .7-104.6 69.1-14.8 10.2-26.9 9.9c-8.9-.2-25.9-5-38.6-9.1-15.5-5-27.9-7.7-26.8-16.3q.8-6.7 18.5-13.7 108.4-47.2 144.6-62.3c68.9-28.6 83.2-33.6 92.5-33.8 2.1 0 6.6 .5 9.6 2.9a10.5 10.5 0 0 1 3.5 6.7A43.8 43.8 0 0 1 363 176.7z"></path>
+                                    </svg>
+                                    </span>
+                                </a>
+                                <button class="focus:outline-none text-white font-somebold  bg-red-700 hover:bg-red-700 focus:ring-4 focus:ring-red-300 rounded-lg
+                                 text-sm px-4 py-2   dark:bg-red-700 dark:hover:bg-red-700 dark:focus:ring-red-700">
+                                   Войти
+                                </button>
+                                <button class="focus:outline-none text-white bg-red-700 hover:bg-red-70 font-somebold0 focus:ring-4 focus:ring-red-300  rounded-lg
+                                 text-sm px-4 py-2  dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-700">
+                                    Регистрация
+                                </button>
+                          
                             {{-- @guest
                                 @if (Route::has('login'))
                                     <div class="py-6">
@@ -348,21 +405,22 @@
                                     {{ __('Log out') }}
                                 </a>
                             @endguest --}}
+                            
                         </div>
                     </div>
                 </div>
             </div>
             <div class="my-5"> 
-                <form class="max-w-3xl mx-auto">   
-                    <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Поиск</label>
+                <form class="max-w-5xl mx-auto hover:border-red-800  focus:border-red-800">   
+                    <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white hover:border-red-800  focus:border-red-800">Поиск</label>
                     <div class="relative">
                         <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
                             <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
                             </svg>
                         </div>
-                        <input type="search" id="default-search" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Поиск" required />
-                        <button type="submit" class="text-white absolute end-2.5 bottom-2.5 bg-green-700 hover:bg-grenn-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Поиск</button>
+                        <input type="search" id="default-search" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-red-800  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white hover:border-red-800  focus:border-red-800 " placeholder="Санаторий им.Горького" required />
+                        <button type="submit" class="text-white absolute end-2.5 bottom-2.5 bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-800 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 hover:border-red-800  focus:border-red-800">Поиск</button>
                     </div>
                 </form>
             </div>

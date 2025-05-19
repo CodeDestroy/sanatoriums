@@ -2,24 +2,69 @@
 
 @section('content')
 
-<div id="hero">
+ <!--  <div id="hero">
     <hero />
-</div>
+</div> -->
+<div class="relative w-full max-w-4xl mx-auto px-4"> <!-- px-4: защищает от выхода за край -->
+    <!-- Контейнер карусели + кнопки внутри -->
+    <div class="relative">
+      <!-- Карусель -->
+      <div id="carousel" class="overflow-hidden relative">
+        <div class="flex transition-transform duration-500" style="transform: translateX(0%)" data-slides>
+          <!-- Слайд 1 -->
+          <div class="w-full shrink-0 p-4">
+            <div class="grid gap-4 
+                        grid-cols-1 
+                        sm:grid-cols-3 sm:grid-rows-3 sm:grid-flow-col">
+              <div class="sm:row-span-3 bg-blue-200 p-4 flex justify-center items-center">01</div>
+              <div class="sm:col-span-2 bg-green-200 p-4 flex justify-center items-center">02</div>
+              <div class="sm:col-span-2 sm:row-span-2 bg-red-200 p-4 flex justify-center items-center">03</div>
+            </div>
+          </div>
 
-<div id="gridlist">
-    <grid-list />
+          <!-- Слайд 2 -->
+          <div class="w-full shrink-0 p-4">
+            <div class="grid gap-4 
+                        grid-cols-1 
+                        sm:grid-cols-3 sm:grid-rows-3 sm:grid-flow-col">
+                        <div class="sm:row-span-3 bg-blue-200 p-4 flex justify-center items-center">01</div>
+                        <div class="sm:col-span-2 bg-green-200 p-4 flex justify-center items-center">02</div>
+                        <div class="sm:col-span-2 sm:row-span-2 bg-red-200 p-4 flex justify-center items-center">03</div>
 </div>
-  <div class="my-10">
-    <div class="w-full max-w-5xl mx-auto mt-10 px-4">
+            </div>
+          
+        </div>
+      </div>
+
+      <!-- Кнопки (внутри контейнера, не выходят за экран) -->
+      <div class="absolute inset-y-0 left-0 flex items-center pl-2">
+        <button id="prevBtn" class="bg-white border p-2 rounded-full shadow hover:bg-gray-100 z-10">
+          &#8592;
+        </button>
+      </div>
+      <div class="absolute inset-y-0 right-0 flex items-center pr-2">
+        <button id="nextBtn" class="bg-white border p-2 rounded-full shadow hover:bg-gray-100 z-10">
+          &#8594;
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+<!--  <div id="gridlist">
+    <grid-list />
+</div> -->
+  <div class="my-10">  
+    <div class="w-full max-w-5xl mx-auto mt-10 px-2 ">
         <div class="flex flex-col md:flex-row bg-white rounded-xl shadow-md overflow-hidden border border-gray-300">
           
           <!-- Название курорта или отеля -->
           <input type="text" placeholder="Название курорта или отеля"
-                 class="flex-1 px-4 py-3 text-sm text-gray-700 placeholder-gray-500 focus:outline-none border-b md:border-b-0 md:border-r border-gray-300"/>
+                 class="flex-1  py-3 text-sm text-gray-700 placeholder-gray-500 focus:outline-none border-b md:border-r border-gray-300 hover:border-red-800  focus:border-red-800"/>
       
           <!-- Даты -->
-          <div class="flex items-center px-4 py-3 text-sm text-gray-700 border-b md:border-b-0 md:border-r border-gray-300">
-            <svg class="w-5 h-5 text-green-600 mr-2" fill="currentColor" viewBox="0 0 20 20">
+          <div class="flex items-center px-4 py-3 text-sm text-gray-700 border-b  md:border-r border-gray-300 ">
+            <svg class="w-5 h-5 text-red-700 mr-2" fill="currentColor" viewBox="0 0 20 20">
               <path d="M6 2a1 1 0 000 2h1v1a1 1 0 102 0V4h2v1a1 1 0 102 0V4h1a1 1 0 100-2h-1V1a1 1 0 10-2 0v1H9V1a1 1 0 10-2 0v1H6zM3 7a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V7zm2 0v8h10V7H5z"/>
             </svg>
             17.05.2025 - 31.05.2025
@@ -28,18 +73,24 @@
           <!-- Гости -->
           <div class="flex items-center px-4 py-3 text-sm text-gray-700 border-b md:border-b-0 md:border-r border-gray-300">
             2 взрослых <span class="text-gray-400 ml-1">0 детей</span>
-            <svg class="w-4 h-4 ml-2 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-4 h-4 ml-2 text-red-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
             </svg>
           </div>
       
           <!-- Кнопка -->
-          <button class="bg-green-600 hover:bg-green-700 text-white text-sm font-medium px-6 py-3 w-full md:w-auto">
+          <button class="bg-red-700 hover:bg-red-700 text-white text-sm font-medium px-6 py-3 w-full md:w-auto">
             Найти
           </button>
         </div>
       </div>
   </div>
+
+<div id="hits">
+    <hits/>
+</div> 
+
+
 <div class="bg-gray-100 py-24 sm:py-32"  id='dopObr'{{-- style="height: 100vh;" --}}>
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
         <div class="mx-auto max-w-2xl lg:mx-0">
@@ -88,6 +139,35 @@
     </div>
 </div>
 
+<div id="news">
+    <news/>
+</div> 
+
+
+
+
+
+
+   <!-- JS -->
+   <script>
+    const carousel = document.querySelector('[data-slides]');
+    const slides = carousel.children.length;
+    let currentIndex = 0;
+
+    document.getElementById('prevBtn').addEventListener('click', () => {
+      currentIndex = (currentIndex - 1 + slides) % slides;
+      updateSlide();
+    });
+
+    document.getElementById('nextBtn').addEventListener('click', () => {
+      currentIndex = (currentIndex + 1) % slides;
+      updateSlide();
+    });
+
+    function updateSlide() {
+      carousel.style.transform = translateX(-${currentIndex * 100}%);
+    }
+  </script>
 <!--
 <div id="cards">
     <cards />
