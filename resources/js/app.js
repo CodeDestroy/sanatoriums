@@ -16,6 +16,8 @@ import WithExpandableProductFilterPanel from './components/sanatoriums/WithExpan
 import CardWithFullDetails from './components/sanatoriums/CardWithFullDetails.vue'
 import WithInlinePrice from './components/sanatoriums/WithInlinePrice.vue'
 import WithImageGalleryAndExpandableDetails from './components/sanatoriums/WithImageGalleryAndExpandableDetails.vue'
+import Hits from './components/sanatoriums/Hits.vue'
+import News from './components/sanatoriums/News.vue'
 createApp({})
 .component('WithExpandableProductFilterPanel', WithExpandableProductFilterPanel)
 .mount('#with-expandable-product-filter-panel')
@@ -113,6 +115,14 @@ createApp({})
 createApp({})
 .component('Cards', Cards)
 .mount('#cards')
+
+createApp({})
+.component('Hits', Hits)
+.mount('#hits')
+
+createApp({})
+.component('News', News)
+.mount('#news')
 document.getElementById('generate-pdf')?.addEventListener('click', function () {
 /*   const { jsPDF } = window.jspdf; */
 
