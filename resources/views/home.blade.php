@@ -5,20 +5,25 @@
  <!--  <div id="hero">
     <hero />
 </div> -->
-<div class="relative w-full max-w-4xl mx-auto px-4"> <!-- px-4: защищает от выхода за край -->
+<div class="relative w-full max-w-5xl mx-auto px-4"> <!-- px-4: защищает от выхода за край -->
     <!-- Контейнер карусели + кнопки внутри -->
     <div class="relative">
       <!-- Карусель -->
       <div id="carousel" class="overflow-hidden relative">
-        <div class="flex transition-transform duration-500" style="transform: translateX(0%)" data-slides>
+        <div class="flex transition-transform duration-500 bg-gray-100" style="transform: translateX(0%)" data-slides>
           <!-- Слайд 1 -->
           <div class="w-full shrink-0 p-4">
             <div class="grid gap-4 
                         grid-cols-1 
                         sm:grid-cols-3 sm:grid-rows-3 sm:grid-flow-col">
-              <div class="sm:row-span-3 bg-blue-200 p-4 flex justify-center items-center">01</div>
-              <div class="sm:col-span-2 bg-green-200 p-4 flex justify-center items-center">02</div>
-              <div class="sm:col-span-2 sm:row-span-2 bg-red-200 p-4 flex justify-center items-center">03</div>
+              <div class="sm:col-span-2 p-4 flex justify-center items-center"> 
+                <p class="text-4xl font-bold tracking-tight text-mona-lisa-600 sm:text-4xl">Санаторий имени Горького</p></div>
+              <div class="sm:col-span-2 sm:row-span-2  p-4 flex justify-center items-center">
+                <p class="text-xl text-salt-800 font-semibold py-2">
+                текст  текст текст текст текст  текст текст текст текст текст текст текст текст
+                текст текст текст текст текст текст текст текст текст текст </p>
+              </div>
+              <div class="sm:row-span-3 flex-shrink-0 "><img class="h-60 sm:h-48 object-cover sm:object-none rounded-xl"  src="img/1234.jpg"></div>
             </div>
           </div>
 
@@ -27,9 +32,9 @@
             <div class="grid gap-4 
                         grid-cols-1 
                         sm:grid-cols-3 sm:grid-rows-3 sm:grid-flow-col">
-                        <div class="sm:row-span-3 bg-blue-200 p-4 flex justify-center items-center">01</div>
-                        <div class="sm:col-span-2 bg-green-200 p-4 flex justify-center items-center">02</div>
-                        <div class="sm:col-span-2 sm:row-span-2 bg-red-200 p-4 flex justify-center items-center">03</div>
+                        <div class="sm:col-span-2 bg-green-200 p-4 flex justify-center items-center">01</div>
+              <div class="sm:col-span-2 sm:row-span-2 bg-red-200 p-4 flex justify-center items-center">02</div>
+              <div class="sm:row-span-3 bg-blue-200 p-4 flex justify-center items-center">03</div>
 </div>
             </div>
           
@@ -138,6 +143,42 @@
         </div>
     </div>
 </div>
+
+<div class=" pt-12 sm:pt-24" id="content-to-convert">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+      <p class="text-4xl font-bold tracking-tight text-mona-lisa-600 sm:text-4xl">Санаторно-курортная карта</p>
+    </div>
+    <div class="mx-auto max-w-7xl mt-12  px-6 lg:px-8">
+        <dl class="max-w-7xl text-gray-900 divide-y divide-gray-200 dark:text-white dark:divide-gray-700">
+            <div class="flex flex-col pb-3">
+                <dt class=" mb-1 text-lg font-semibold">Для чего нужна санаторно-курортная карта? </dt>
+                <dd class="text-gray-500 md:text-lg dark:text-gray-400">Карта понадобится при поступлении в оздоровительное учреждение для проведения корректного лечения. В документе содержится информация о результатах обследований, перенесенных заболеваниях, а также о наличии показаний и/или противопоказаний к лечению.
+                    На основании санаторно-курортной карты отдыхающим назначаются те или иные оздоровительные процедуры.</dd>
+            </div>
+            <div class="flex flex-col py-3">
+                <dt class=" mb-1 text-lg font-semibold">Для чего нужна санаторно-курортная карта? </dt>
+                    <dd class="text-gray-500 md:text-lg dark:text-gray-400">Карта понадобится при поступлении в оздоровительное учреждение для проведения корректного лечения. В документе содержится информация о результатах обследований, перенесенных заболеваниях, а также о наличии показаний и/или противопоказаний к лечению.
+                        На основании санаторно-курортной карты отдыхающим назначаются те или иные оздоровительные процедуры.</dd>
+            </div>
+            <div class="flex flex-col pt-3">
+                <dt class=" mb-1 text-lg font-semibold">Для чего нужна санаторно-курортная карта? </dt>
+                    <dd class="text-gray-500 md:text-lg dark:text-gray-400">Карта понадобится при поступлении в оздоровительное учреждение для проведения корректного лечения. В документе содержится информация о результатах обследований, перенесенных заболеваниях, а также о наличии показаний и/или противопоказаний к лечению.
+                        На основании санаторно-курортной карты отдыхающим назначаются те или иные оздоровительные процедуры.</dd>
+            </div>
+            <div class="flex flex-col pt-3">
+                <dt class=" mb-1 text-lg font-semibold">Для чего нужна санаторно-курортная карта? </dt>
+                    <dd class="text-gray-500 md:text-lg dark:text-gray-400">Карта понадобится при поступлении в оздоровительное учреждение для проведения корректного лечения. В документе содержится информация о результатах обследований, перенесенных заболеваниях, а также о наличии показаний и/или противопоказаний к лечению.
+                        На основании санаторно-курортной карты отдыхающим назначаются те или иные оздоровительные процедуры.</dd>
+            </div>
+        </dl>
+        <button class="mt-5 focus:outline-none text-white bg-red-700 hover:bg-red-70 font-somebold0 focus:ring-4 focus:ring-red-300  rounded-lg
+                                 text-lg px-4 py-2  dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-700 ">
+                                    Подробнее
+                                </button>
+    </div>
+  </div>
+
+
 
 <div id="news">
     <news/>
