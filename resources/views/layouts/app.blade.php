@@ -46,7 +46,7 @@
                 </div>
             
                 <!-- Desktop nav -->
-                <div class="hidden lg:flex xl:gap-x-10 md:gap-x-6 lg:text-md md:text-sm">
+                <div class="hidden lg:flex xl:gap-x-10 md:gap-x-4 lg:text-md md:text-sm items-center">
                  <!--   <a href="{{ url('/') }}" class="text-sm font-semibold leading-6 text-gray-900">Главная</a> -->
                     <div class="relative" x-data="{ dropdown: false }">
                         <button @click="dropdown = !dropdown" @click.away="dropdown = false" class="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900">
@@ -147,7 +147,7 @@
                     </div>
                     <a href="{{ url('/contacts') }}" class="text-sm font-semibold leading-6 text-gray-900">Контакты</a>
                     
-                    <div class="hidden lg:flex lg:gap-x-2">
+                    <div class="hidden lg:flex lg:gap-x-2 items-center">
                         <a href="https://vk.com/brain_cat" class="hidden sm:block border-transparent focus:border-transparent focus:ring-0">
                             <span class="[&>svg]:h-7 [&>svg]:w-7">
                                 <svg
@@ -176,19 +176,36 @@
                             Регистрация
                         </button> --}}
                         <!-- Обертка с Alpine.js -->
-                        <div x-data="{ openLoginModal: false }">
+                        <div x-data="{ openLoginModal: false }" class="flex">
                         <!-- Кнопка "Войти" -->
-                            <button @click="openLoginModal = true"
-                                class="focus:outline-none text-white font-somebold bg-red-700 hover:bg-red-700 focus:ring-4 focus:ring-red-300 rounded-lg
-                                    text-sm px-4 py-2 dark:bg-red-700 dark:hover:bg-red-700 dark:focus:ring-red-700">
-                                Войти
-                            </button>
+                            @guest
+                                @if (Route::has('login'))
+                                    {{-- <div class="py-6">
+                                        <a href="{{ route('login') }}" class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">{{ __('Log in') }}</a>
+                                    </div> --}}
+                                    <a @click="openLoginModal = true"
+                                        class="focus:outline-none text-white font-somebold bg-red-700 hover:bg-red-700 focus:ring-4 focus:ring-red-300 rounded-lg
+                                            text-sm px-4 py-[0.6rem] dark:bg-red-700 dark:hover:bg-red-700 dark:focus:ring-red-700 mx-1">
+                                        {{ __('Log in') }}
+                                    </a>
+                                @endif
+                            @else
+                                @if (Auth::user()->hasAnyAccess(['platform.*'])) 
+                                    <a href="{{ route('platform.index') }}" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Админка</a>
+                                @endif
+                                <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" 
+                                    class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
+                                    {{ __('Log out') }}
+                                </a>
+                            @endguest
+                            
 
                             <!-- Кнопка "Регистрация" -->
-                            <button class="focus:outline-none text-white bg-red-700 hover:bg-red-70 font-somebold0 focus:ring-4 focus:ring-red-300 rounded-lg
-                                    text-sm px-4 py-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-700">
+                            <a class="focus:outline-none text-white bg-red-700 hover:bg-red-70 font-somebold0 focus:ring-4 focus:ring-red-300 rounded-lg
+                                    text-sm px-4 py-[0.6rem] dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-700 mx-1"  href="{{ route('register') }}"
+                                    >
                                 Регистрация
-                            </button>
+                            </a>
 
                             <!-- Контейнер, для примера -->
                             <div class="bg-gray-300" ></div>
@@ -211,34 +228,129 @@
                                         class="relative transform overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg sm:p-6">
                                         
                                         <!-- Содержимое -->
-                                        <div class="sm:flex sm:items-start">
-                                            <div class="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
+                                        <div class="">
+                                            <form method="POST" action="{{ route('login') }}" class="space-y-6">
+                                            @csrf
+                                            {{-- <div class="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
                                                 <svg class="h-6 w-6 text-red-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                                                     <path stroke-linecap="round" stroke-linejoin="round"
                                                     d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
                                                 </svg>
-                                            </div>
+                                            </div> --}}
                                             <div class="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
                                                 <h3 class="text-base font-semibold leading-6 text-gray-900" id="modal-title">Вход в аккаунт</h3>
                                                 <div class="mt-2">
                                                     <p class="text-sm text-gray-500">Введите свои учетные данные для входа.</p>
                                                 </div>
+                                                {{--  --}}
+
+                                                
+                                                    <div>
+                                                        <label for="email" class="block text-sm font-medium leading-6 text-gray-900">{{ __('Почта') }}</label>
+                                                        <div class="mt-2">
+                                                            <input 
+                                                                id="email" 
+                                                                name="email" 
+                                                                type="email" 
+                                                                autocomplete="email" 
+                                                                required 
+                                                                class="@error('email') is-invalid @enderror block w-full rounded-md border-0 py-1.5 px-4 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-red-800 sm:text-sm sm:leading-6">
+                                                            @error('email')
+                                                                <span class="invalid-feedback" role="alert">
+                                                                    <strong>{{ $message }}</strong>
+                                                                </span>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+
+                                                    {{--  --}}
+                                                    <div>
+                                                        <label for="password" class="block text-sm font-medium leading-6 text-gray-900">Пароль</label>
+                                                        <div class="relative mt-2">
+                                                            <input id="password" name="password" type="password" required
+                                                                class="block w-full rounded-md border-0 outline-none accent-red-800 py-1.5 px-4 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-red-800 sm:text-sm sm:leading-6 pr-10 @error('password') border-red-500 @enderror">
+                                                            <button id="showPass" onclick="showPassFunc()" type="button" class="absolute inset-y-0 right-0 flex items-center px-2.5 text-gray-500 hover:text-gray-700" style="right: 5px"> 
+                                                                <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" data-slot="icon" fill="none" stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.98 8.223A10.477 10.477 0 0 0 1.934 12C3.226 16.338 7.244 19.5 12 19.5c.993 0 1.953-.138 2.863-.395M6.228 6.228A10.451 10.451 0 0 1 12 4.5c4.756 0 8.773 3.162 10.065 7.498a10.522 10.522 0 0 1-4.293 5.774M6.228 6.228 3 3m3.228 3.228 3.65 3.65m7.894 7.894L21 21m-3.228-3.228-3.65-3.65m0 0a3 3 0 1 0-4.243-4.243m4.242 4.242L9.88 9.88"></path>
+                                                                </svg>
+                                                            </button>
+                                                            <button id="dontShowPass" onclick="showPassFunc()" type="button" class="absolute inset-y-0 right-0 flex items-center px-2.5 text-gray-500 hover:text-gray-700" style="right: 5px; display: none;">
+                                                                <svg class="w-4 h-4 text-gray-500 dark:text-gray-400"  data-slot="icon" fill="none" stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z"></path>
+                                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"></path>
+                                                                </svg>
+                                                            </button>
+                                                                
+                                                            @error('password')
+                                                                <p class="mt-1 text-sm text-red-500">{{ $message }}</p>
+                                                            @enderror
+                                                        </div>
+                                                            
+                                                        @error('password')
+                                                            <p class="mt-1 text-sm text-red-500">{{ $message }}</p>
+                                                        @enderror
+                                                    </div>
+                                                    <script>
+                                                        const showPassBtn = document.getElementById('showPass')
+                                                        const dontShowPassBtn = document.getElementById('dontShowPass')
+                                                        const passwordInp = document.getElementById('password')
+                                                        var showPassBool = false;
+                                                        function showPassFunc() {
+                                                            if (!showPassBool) {
+                                                                showPassBtn.style.display = 'none'
+                                                                dontShowPassBtn.style.display = 'block'
+                                                                showPassBool = true;
+                                                                passwordInp.type = 'text'
+                                                            }
+                                                            else {
+                                                                showPassBtn.style.display = 'block'
+                                                                dontShowPassBtn.style.display = 'none'
+                                                                showPassBool = false;
+                                                                passwordInp.type = 'password'
+                                                            }
+                                                        }
+                                                    </script>
+                                                    {{--  --}}
+                                                    
+                                                    
+                                                    <div class="flex items-center justify-between">
+                                                        <div class="flex items-center">
+                                                            <input id="remember" name="remember" type="checkbox" class="h-4 w-4 rounded accent-red-800 border-gray-300 text-red-800 focus:ring-red-800" {{ old('remember') ? 'checked' : '' }}>
+                                                            <label for="remember" class="ml-3 block text-sm leading-6 text-gray-700">{{ __('Remember me') }}</label>
+                                                        </div>
+                                    
+                                                        {{-- @if (Route::has('password.request'))
+                                                            <div class="text-sm leading-6">
+                                                                <a href="{{ route('password.request') }}" class="font-semibold text-mona-lisa-600 hover:text-mona-lisa-600">{{ __('Забыли пароль?') }}</a>
+                                                            </div>
+                                                        @endif --}}
+                                                    </div>
+                                    
+                                                    {{-- <div>
+                                                        <button type="submit" class="flex w-full justify-center rounded-md bg-salt-700 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-salt-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-salt-800">
+                                                            {{ __('Войти') }}
+                                                        </button>
+                                                    </div> --}}
+                                                
+
+                                                {{--  --}}
                                             </div>
                                         </div>
 
                                         <!-- Кнопки -->
                                         <div class="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
-                                            <button type="button"
+                                            <button type="submit"
                                                     class="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto"
-                                                    @click="openLoginModal = false">
-                                                Войти
+                                                    @click="openLoginModal = false" disabled>
+                                                {{ __('Log in') }}
                                             </button>
                                             <button type="button"
                                                     class="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto"
                                                     @click="openLoginModal = false">
-                                                Отмена
+                                                {{ __('Cancel') }}
                                             </button>
                                         </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -254,126 +366,6 @@
                     }    
                 </script>
                 <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-                    {{-- @guest
-                    <div class="relative" x-data="{ expanded: false }" >
-                        <button 
-                            x-on:click="expanded = !expanded" 
-                            type="button" 
-                            class="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900" 
-                            aria-expanded="false"
-                            
-                        >
-                            {{ __('Log in') }}
-                            <span aria-hidden="true">→</span>
-                        </button>
-                        <div 
-                            x-show="expanded" 
-                            x-on:click.outside="expanded = false" 
-                            class="absolute -left-8 top-full z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-white shadow-lg ring-1 ring-gray-900/5"
-                            style="display: none; left: -22rem"
-                        >
-                            <div class="p-4">
-                                <div class="group relative flex gap-x-6 rounded-lg p-4 text-sm leading-6 hover:bg-gray-50">
-                                    <div class="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
-                                        <svg class="h-6 w-6 text-gray-600 group-hover:text-forest-green-800" fill="none" stroke="currentColor" stroke-width="1.5"  viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                                            <path stroke-linecap="round" stroke-linejoin="round" d="M18 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0ZM3 19.235v-.11a6.375 6.375 0 0 1 12.75 0v.109A12.318 12.318 0 0 1 9.374 21c-2.331 0-4.512-.645-6.374-1.766Z"></path>
-                                        </svg>
-                                    </div>
-                                    <div class="flex-auto">
-                                        @if (Route::has('login'))
-                                            
-                                            <a href="{{ route('login') }}" class="block font-semibold text-gray-900 content-center">
-                                                {{ __('Log in') }}
-                                                <span class="absolute inset-0"></span>
-                                            </a>
-                                        @endif
-                                    </div>
-                                </div>
-                                <div class="group relative flex gap-x-6 rounded-lg p-4 text-sm leading-6 hover:bg-gray-50">
-                                    <div class="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
-                                        <svg class="h-6 w-6 text-gray-600 group-hover:text-forest-green-800" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                                            <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10"></path>
-                                        </svg>
-                                    </div>
-                                    <div class="flex-auto">
-                                        @if (Route::has('register'))
-                                            
-                                            <a href="{{ route('register') }}" class="block font-semibold text-gray-900 content-center">
-                                                {{ __('Register') }}
-                                                <span class="absolute inset-0"></span>
-                                            </a>
-                                        @endif
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>                         
-                    @else
-                        <div class="relative" x-data="{ expanded: false }" >
-                            <button x-on:click="expanded = !expanded"  type="button" class="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900" aria-expanded="false">
-                                {{ Auth::user()->name }}
-                            <svg class="h-5 w-5 flex-none text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
-                            </svg>
-                            </button>
-                            <div 
-                                x-show="expanded" 
-                                x-on:click.outside="expanded = false"  
-                                style="left: -22rem"
-                                class="absolute -left-8 top-full z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-white shadow-lg ring-1 ring-gray-900/5"
-                            >
-                                <div class="p-4">
-                                    <div class="group relative flex gap-x-6 rounded-lg p-4 text-sm leading-6 hover:bg-gray-50">
-                                        <div class="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
-                                            <svg class="h-6 w-6 text-gray-600 group-hover:text-forest-green-800" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                                                <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
-                                            </svg>
-                                        </div>
-                                        <div class="flex-auto">
-                                            <a href="{{ route('settings.general') }}" class="block font-semibold text-gray-900">
-                                                Мой профиль
-                                                <span class="absolute inset-0"></span>
-                                            </a>
-                                            <p class="mt-1 text-gray-600">Просмотреть информацию о моём профиле</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                @if (Auth::user()->hasAnyAccess(['platform.*'])) 
-                                    <div class="p-4">
-                                        <div class="group relative flex gap-x-6 rounded-lg p-4 text-sm leading-6 hover:bg-gray-50">
-                                            <div class="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
-                                                <svg class="h-6 w-6 text-gray-600 group-hover:text-forest-green-800" data-slot="icon" fill="none" stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" d="m6.75 7.5 3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0 0 21 18V6a2.25 2.25 0 0 0-2.25-2.25H5.25A2.25 2.25 0 0 0 3 6v12a2.25 2.25 0 0 0 2.25 2.25Z"></path>
-                                                </svg>
-                                            </div>
-                                            <div class="flex-auto">
-                                                <a href={{route('platform.index')}} class="block font-semibold text-gray-900">
-                                                    Админка
-                                                    <span class="absolute inset-0"></span>
-                                                </a>
-                                                <p class="mt-1 text-gray-600">Зайти в админ панель</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endif
-                                <div class="grid grid-cols-1 divide-x divide-gray-900/5 bg-gray-50">
-                                    <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" 
-                                        class="flex items-center justify-center gap-x-2.5 p-3 text-sm font-semibold leading-6 text-gray-900 hover:bg-gray-100">
-                                        <svg class="h-5 w-5 flex-none text-gray-400" data-slot="icon" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                                            <path clip-rule="evenodd" fill-rule="evenodd" d="M3 4.25A2.25 2.25 0 0 1 5.25 2h5.5A2.25 2.25 0 0 1 13 4.25v2a.75.75 0 0 1-1.5 0v-2a.75.75 0 0 0-.75-.75h-5.5a.75.75 0 0 0-.75.75v11.5c0 .414.336.75.75.75h5.5a.75.75 0 0 0 .75-.75v-2a.75.75 0 0 1 1.5 0v2A2.25 2.25 0 0 1 10.75 18h-5.5A2.25 2.25 0 0 1 3 15.75V4.25Z"></path>
-                                            <path clip-rule="evenodd" fill-rule="evenodd" d="M6 10a.75.75 0 0 1 .75-.75h9.546l-1.048-.943a.75.75 0 1 1 1.004-1.114l2.5 2.25a.75.75 0 0 1 0 1.114l-2.5 2.25a.75.75 0 1 1-1.004-1.114l1.048-.943H6.75A.75.75 0 0 1 6 10Z"></path>
-                                        </svg>
-                                        {{ __('Log out') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    @endguest --}}
                 </div>
             </nav>
         
@@ -438,7 +430,7 @@
 
                         
                         <div class="mt-6">
-                             <div class="flex py-2 gap-x-1">
+                            <div class="flex py-2 gap-x-1">
                             <a href="https://vk.com/brain_cat" class="hidden sm:block pt-1.5 border-transparent focus:border-transparent focus:ring-0">
                                 <span class="[&>svg]:h-7 [&>svg]:w-7">
                                     <svg
@@ -457,20 +449,165 @@
                                     </svg>
                                     </span>
                                 </a>
-                             </div>
-                                <button class="focus:outline-none text-white font-somebold  bg-red-700 hover:bg-red-700 focus:ring-4 focus:ring-red-300 rounded-lg
-                                 text-sm px-4 py-2   dark:bg-red-700 dark:hover:bg-red-700 dark:focus:ring-red-700">
-                                   Войти
-                                </button>
-                                <button class="focus:outline-none text-white bg-red-700 hover:bg-red-70 font-somebold0 focus:ring-4 focus:ring-red-300  rounded-lg
-                                 text-sm px-4 py-2  dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-700">
-                                    Регистрация
-                                </button>
-                          
-                            {{-- @guest
+                            </div>
+                            @guest
                                 @if (Route::has('login'))
-                                    <div class="py-6">
-                                        <a href="{{ route('login') }}" class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">{{ __('Log in') }}</a>
+                                    <div x-data="{ openLoginModalMobile: false }" class="grid sm:grid-cols-4 grid-cols-1 gap-4">
+                                        <div class=" col-1">
+                                            <a class="w-auto focus:outline-none text-white font-somebold  bg-red-700 hover:bg-red-700 focus:ring-4 focus:ring-red-300 rounded-lg
+                                                text-sm px-4 py-2   dark:bg-red-700 dark:hover:bg-red-700 dark:focus:ring-red-700" @click="openLoginModalMobile = true">
+                                                {{ __('Log in') }}
+                                            </a>
+                                        </div>
+                                        <div class=" col-1">
+                                            <a class="w-auto focus:outline-none text-white bg-red-700 hover:bg-red-70 font-somebold0 focus:ring-4 focus:ring-red-300  rounded-lg
+                                                text-sm px-4 py-2  dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-700" href="{{ route('register') }}">
+                                                    Регистрация
+                                            </a>
+                                        </div>
+                                        <div x-show="openLoginModalMobile" x-transition x-cloak class="fixed inset-0 z-20" aria-labelledby="modal-title" aria-modal="true">
+                                            <!-- Затемнение фона -->
+                                            <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" @click="openLoginModalMobile = false"></div>
+
+                                            <!-- Контейнер модалки -->
+                                            <div class="fixed inset-0 z-30 flex items-center justify-center p-4">
+                                                <div @click.away="openLoginModalMobile = false"
+                                                    x-show="openLoginModalMobile"
+                                                    x-transition:enter="ease-out duration-300"
+                                                    x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                                                    x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100"
+                                                    x-transition:leave="ease-in duration-200"
+                                                    x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100"
+                                                    x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                                                    class="relative transform overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg sm:p-6">
+                                                    
+                                                    <!-- Содержимое -->
+                                                    <div class="">
+                                                        <form method="POST" action="{{ route('login') }}" class="space-y-6">
+                                                        @csrf
+                                                        {{-- <div class="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
+                                                            <svg class="h-6 w-6 text-red-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                                d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
+                                                            </svg>
+                                                        </div> --}}
+                                                        <div class="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
+                                                            <h3 class="text-base font-semibold leading-6 text-gray-900" id="modal-title">Вход в аккаунт</h3>
+                                                            <div class="mt-2">
+                                                                <p class="text-sm text-gray-500">Введите свои учетные данные для входа.</p>
+                                                            </div>
+                                                            {{--  --}}
+
+                                                            
+                                                                <div>
+                                                                    <label for="email" class="block text-sm font-medium leading-6 text-gray-900">{{ __('Почта') }}</label>
+                                                                    <div class="mt-2">
+                                                                        <input 
+                                                                            id="email" 
+                                                                            name="email" 
+                                                                            type="email" 
+                                                                            autocomplete="email" 
+                                                                            required 
+                                                                            class="@error('email') is-invalid @enderror block w-full rounded-md border-0 py-1.5 px-4 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-red-800 sm:text-sm sm:leading-6">
+                                                                        @error('email')
+                                                                            <span class="invalid-feedback" role="alert">
+                                                                                <strong>{{ $message }}</strong>
+                                                                            </span>
+                                                                        @enderror
+                                                                    </div>
+                                                                </div>
+
+                                                                {{--  --}}
+                                                                <div>
+                                                                    <label for="password" class="block text-sm font-medium leading-6 text-gray-900">Пароль</label>
+                                                                    <div class="relative mt-2">
+                                                                        <input id="password" name="password" type="password" required
+                                                                            class="block w-full rounded-md border-0 outline-none accent-red-800 py-1.5 px-4 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-red-800 sm:text-sm sm:leading-6 pr-10 @error('password') border-red-500 @enderror">
+                                                                        <button id="showPass" onclick="showPassFunc()" type="button" class="absolute inset-y-0 right-0 flex items-center px-2.5 text-gray-500 hover:text-gray-700" style="right: 5px"> 
+                                                                            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" data-slot="icon" fill="none" stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                                                                <path stroke-linecap="round" stroke-linejoin="round" d="M3.98 8.223A10.477 10.477 0 0 0 1.934 12C3.226 16.338 7.244 19.5 12 19.5c.993 0 1.953-.138 2.863-.395M6.228 6.228A10.451 10.451 0 0 1 12 4.5c4.756 0 8.773 3.162 10.065 7.498a10.522 10.522 0 0 1-4.293 5.774M6.228 6.228 3 3m3.228 3.228 3.65 3.65m7.894 7.894L21 21m-3.228-3.228-3.65-3.65m0 0a3 3 0 1 0-4.243-4.243m4.242 4.242L9.88 9.88"></path>
+                                                                            </svg>
+                                                                        </button>
+                                                                        <button id="dontShowPass" onclick="showPassFunc()" type="button" class="absolute inset-y-0 right-0 flex items-center px-2.5 text-gray-500 hover:text-gray-700" style="right: 5px; display: none;">
+                                                                            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400"  data-slot="icon" fill="none" stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                                                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z"></path>
+                                                                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"></path>
+                                                                            </svg>
+                                                                        </button>
+                                                                            
+                                                                        @error('password')
+                                                                            <p class="mt-1 text-sm text-red-500">{{ $message }}</p>
+                                                                        @enderror
+                                                                    </div>
+                                                                        
+                                                                    @error('password')
+                                                                        <p class="mt-1 text-sm text-red-500">{{ $message }}</p>
+                                                                    @enderror
+                                                                </div>
+                                                                <script>
+                                                                    const showPassBtn = document.getElementById('showPass')
+                                                                    const dontShowPassBtn = document.getElementById('dontShowPass')
+                                                                    const passwordInp = document.getElementById('password')
+                                                                    var showPassBool = false;
+                                                                    function showPassFunc() {
+                                                                        if (!showPassBool) {
+                                                                            showPassBtn.style.display = 'none'
+                                                                            dontShowPassBtn.style.display = 'block'
+                                                                            showPassBool = true;
+                                                                            passwordInp.type = 'text'
+                                                                        }
+                                                                        else {
+                                                                            showPassBtn.style.display = 'block'
+                                                                            dontShowPassBtn.style.display = 'none'
+                                                                            showPassBool = false;
+                                                                            passwordInp.type = 'password'
+                                                                        }
+                                                                    }
+                                                                </script>
+                                                                {{--  --}}
+                                                                
+                                                                
+                                                                <div class="flex items-center justify-between">
+                                                                    <div class="flex items-center">
+                                                                        <input id="remember" name="remember" type="checkbox" class="h-4 w-4 rounded accent-red-800 border-gray-300 text-red-800 focus:ring-red-800" {{ old('remember') ? 'checked' : '' }}>
+                                                                        <label for="remember" class="ml-3 block text-sm leading-6 text-gray-700">{{ __('Remember me') }}</label>
+                                                                    </div>
+                                                
+                                                                    {{-- @if (Route::has('password.request'))
+                                                                        <div class="text-sm leading-6">
+                                                                            <a href="{{ route('password.request') }}" class="font-semibold text-mona-lisa-600 hover:text-mona-lisa-600">{{ __('Забыли пароль?') }}</a>
+                                                                        </div>
+                                                                    @endif --}}
+                                                                </div>
+                                                
+                                                                {{-- <div>
+                                                                    <button type="submit" class="flex w-full justify-center rounded-md bg-salt-700 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-salt-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-salt-800">
+                                                                        {{ __('Войти') }}
+                                                                    </button>
+                                                                </div> --}}
+                                                            
+
+                                                            {{--  --}}
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- Кнопки -->
+                                                    <div class="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
+                                                        <button type="submit"
+                                                                class="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto"
+                                                                @click="openLoginModalMobile = false" disabled>
+                                                            {{ __('Log in') }}
+                                                        </button>
+                                                        <button type="button"
+                                                                class="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto"
+                                                                @click="openLoginModalMobile = false">
+                                                            {{ __('Cancel') }}
+                                                        </button>
+                                                    </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 @endif
                             @else
@@ -481,7 +618,7 @@
                                     class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
                                     {{ __('Log out') }}
                                 </a>
-                            @endguest --}}
+                            @endguest
                             
                         </div>
                     </div>
@@ -523,8 +660,11 @@
                     </div><div class="pb-6">
                         <a href="" class="text-sm leading-6 text-gray-600 hover:text-gray-900">Отдыхающим</a>
                     </div>
-                    <div class="pb-6 flex ">
+                    <div class="pb-6  ">
                         <a href="{{ url('/contacts') }}" class="text-sm leading-6 text-gray-600 hover:text-gray-900">Контакты</a>
+                     
+                    </div>
+                    <div class="pb-6">
                         <div class="flex  gap-x-1 m-auto items-center">
                             <a href="https://vk.com/brain_cat" class="hidden sm:block  border-transparent focus:border-transparent focus:ring-0">
                                 <span class="[&>svg]:h-7 [&>svg]:w-7">
@@ -542,11 +682,10 @@
                                     <svg class="fill-red-700 hover:fill-red-700" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
                                         <path d="M248 8C111 8 0 119 0 256S111 504 248 504 496 393 496 256 385 8 248 8zM363 176.7c-3.7 39.2-19.9 134.4-28.1 178.3-3.5 18.6-10.3 24.8-16.9 25.4-14.4 1.3-25.3-9.5-39.3-18.7-21.8-14.3-34.2-23.2-55.3-37.2-24.5-16.1-8.6-25 5.3-39.5 3.7-3.8 67.1-61.5 68.3-66.7 .2-.7 .3-3.1-1.2-4.4s-3.6-.8-5.1-.5q-3.3 .7-104.6 69.1-14.8 10.2-26.9 9.9c-8.9-.2-25.9-5-38.6-9.1-15.5-5-27.9-7.7-26.8-16.3q.8-6.7 18.5-13.7 108.4-47.2 144.6-62.3c68.9-28.6 83.2-33.6 92.5-33.8 2.1 0 6.6 .5 9.6 2.9a10.5 10.5 0 0 1 3.5 6.7A43.8 43.8 0 0 1 363 176.7z"></path>
                                     </svg>
-                                    </span>
-                                </a>
-                             </div>
+                                </span>
+                            </a>
+                        </div>
                     </div>
-                   
                   
                 </nav>
                 
