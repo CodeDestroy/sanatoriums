@@ -166,6 +166,7 @@
                                 </svg>
                             </span>
                         </a>
+                    </div>
                         {{-- <button class="focus:outline-none text-white font-somebold  bg-red-700 hover:bg-red-700 focus:ring-4 focus:ring-red-300 rounded-lg
                             text-sm px-4 py-2   dark:bg-red-700 dark:hover:bg-red-700 dark:focus:ring-red-700" onClick='showLoginModal()'>
                            Войти
@@ -176,36 +177,130 @@
                             Регистрация
                         </button> --}}
                         <!-- Обертка с Alpine.js -->
-                        <div x-data="{ openLoginModal: false }" class="flex">
+                        
+                        <div x-data="{ openLoginModal: false }" class="relative">
                         <!-- Кнопка "Войти" -->
                             @guest
-                                @if (Route::has('login'))
-                                    {{-- <div class="py-6">
-                                        <a href="{{ route('login') }}" class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">{{ __('Log in') }}</a>
-                                    </div> --}}
-                                    <a @click="openLoginModal = true"
-                                        class="focus:outline-none text-white font-somebold bg-red-700 hover:bg-red-700 focus:ring-4 focus:ring-red-300 rounded-lg
-                                            text-sm px-4 py-[0.6rem] dark:bg-red-700 dark:hover:bg-red-700 dark:focus:ring-red-700 mx-1">
+                                <div class="relative items-center" x-data="{ expanded: false }" >
+                                    <button 
+                                        x-on:click="expanded = !expanded" 
+                                        type="button" 
+                                        class="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900" 
+                                        aria-expanded="false"
+                                        
+                                    >
                                         {{ __('Log in') }}
-                                    </a>
-                                @endif
+                                        <span aria-hidden="true">→</span>
+                                    </button>
+                                    <div 
+                                        x-show="expanded" 
+                                        x-on:click.outside="expanded = false" 
+                                        class="absolute -left-8 top-full z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-white shadow-lg ring-1 ring-gray-900/5"
+                                        style="display: none; left: -22rem"
+                                    >
+                                        <div class="p-4">
+                                            <div class="group relative flex gap-x-6 rounded-lg p-4 text-sm leading-6 hover:bg-gray-50">
+                                                <div class="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
+                                                    <svg class="h-6 w-6 text-gray-600 group-hover:text-mona-lisa-600" fill="none" stroke="currentColor" stroke-width="1.5"  viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" d="M18 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0ZM3 19.235v-.11a6.375 6.375 0 0 1 12.75 0v.109A12.318 12.318 0 0 1 9.374 21c-2.331 0-4.512-.645-6.374-1.766Z"></path>
+                                                    </svg>
+                                                </div>
+                                                <div class="flex-auto">
+                                                    @if (Route::has('login'))
+                                                        
+                                                        <a @click="openLoginModal = true" class="block font-semibold text-gray-900">
+                                                            {{ __('Log in') }}
+                                                            <span class="absolute inset-0"></span>
+                                                        </a>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                            <div class="group relative flex gap-x-6 rounded-lg p-4 text-sm leading-6 hover:bg-gray-50">
+                                                <div class="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
+                                                    <svg class="h-6 w-6 text-gray-600 group-hover:text-mona-lisa-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10"></path>
+                                                    </svg>
+                                                </div>
+                                                <div class="flex-auto">
+                                                    @if (Route::has('register'))
+                                                        
+                                                        <a href="{{ route('register') }}" class="block font-semibold text-gray-900">
+                                                            {{ __('Register') }}
+                                                            <span class="absolute inset-0"></span>
+                                                        </a>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>                         
                             @else
-                                @if (Auth::user()->hasAnyAccess(['platform.*'])) 
-                                    <a href="{{ route('platform.index') }}" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Админка</a>
-                                @endif
-                                <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" 
-                                    class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
-                                    {{ __('Log out') }}
-                                </a>
+                                <div class="relative" x-data="{ expanded: false }" >
+                                    <button x-on:click="expanded = !expanded"  type="button" class="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900" aria-expanded="false">
+                                        {{ Auth::user()->name }}
+                                    <svg class="h-5 w-5 flex-none text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                        <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+                                    </svg>
+                                    </button>
+                                    <div 
+                                        x-show="expanded" 
+                                        x-on:click.outside="expanded = false"  
+                                        style="left: -22rem"
+                                        class="absolute -left-8 top-full z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-white shadow-lg ring-1 ring-gray-900/5"
+                                    >
+                                        <div class="p-4">
+                                            <div class="group relative flex gap-x-6 rounded-lg p-4 text-sm leading-6 hover:bg-gray-50">
+                                                <div class="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
+                                                    <svg class="h-6 w-6 text-gray-600 group-hover:text-mona-lisa-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
+                                                    </svg>
+                                                </div>
+                                                <div class="flex-auto">
+                                                    <a href="{{ route('settings.general') }}" class="block font-semibold text-gray-900">
+                                                        Мой профиль
+                                                        <span class="absolute inset-0"></span>
+                                                    </a>
+                                                    <p class="mt-1 text-gray-600">Просмотреть информацию о моём профиле</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        @if (Auth::user()->hasAnyAccess(['platform.*'])) 
+                                            <div class="p-4">
+                                                <div class="group relative flex gap-x-6 rounded-lg p-4 text-sm leading-6 hover:bg-gray-50">
+                                                    <div class="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
+                                                        <svg class="h-6 w-6 text-gray-600 group-hover:text-mona-lisa-600" data-slot="icon" fill="none" stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                                            <path stroke-linecap="round" stroke-linejoin="round" d="m6.75 7.5 3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0 0 21 18V6a2.25 2.25 0 0 0-2.25-2.25H5.25A2.25 2.25 0 0 0 3 6v12a2.25 2.25 0 0 0 2.25 2.25Z"></path>
+                                                        </svg>
+                                                    </div>
+                                                    <div class="flex-auto">
+                                                        <a href={{route('platform.index')}} class="block font-semibold text-gray-900">
+                                                            Админка
+                                                            <span class="absolute inset-0"></span>
+                                                        </a>
+                                                        <p class="mt-1 text-gray-600">Зайти в админ панель</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endif
+                                        <div class="grid grid-cols-1 divide-x divide-gray-900/5 bg-gray-50">
+                                            <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" 
+                                                class="flex items-center justify-center gap-x-2.5 p-3 text-sm font-semibold leading-6 text-gray-900 hover:bg-gray-100">
+                                                <svg class="h-5 w-5 flex-none text-gray-400" data-slot="icon" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                                    <path clip-rule="evenodd" fill-rule="evenodd" d="M3 4.25A2.25 2.25 0 0 1 5.25 2h5.5A2.25 2.25 0 0 1 13 4.25v2a.75.75 0 0 1-1.5 0v-2a.75.75 0 0 0-.75-.75h-5.5a.75.75 0 0 0-.75.75v11.5c0 .414.336.75.75.75h5.5a.75.75 0 0 0 .75-.75v-2a.75.75 0 0 1 1.5 0v2A2.25 2.25 0 0 1 10.75 18h-5.5A2.25 2.25 0 0 1 3 15.75V4.25Z"></path>
+                                                    <path clip-rule="evenodd" fill-rule="evenodd" d="M6 10a.75.75 0 0 1 .75-.75h9.546l-1.048-.943a.75.75 0 1 1 1.004-1.114l2.5 2.25a.75.75 0 0 1 0 1.114l-2.5 2.25a.75.75 0 1 1-1.004-1.114l1.048-.943H6.75A.75.75 0 0 1 6 10Z"></path>
+                                                </svg>
+                                                Выйти
+                                            </a>
+
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                                @csrf
+                                            </form>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
                             @endguest
                             
-
-                            <!-- Кнопка "Регистрация" -->
-                            <a class="focus:outline-none text-white bg-red-700 hover:bg-red-70 font-somebold0 focus:ring-4 focus:ring-red-300 rounded-lg
-                                    text-sm px-4 py-[0.6rem] dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-700 mx-1" {{--  href="{{ route('register') }}" --}}
-                                    >
-                                Регистрация
-                            </a>
 
                             <!-- Контейнер, для примера -->
                             <div class="bg-gray-300" ></div>
@@ -355,9 +450,6 @@
                                 </div>
                             </div>
                         </div>
-
-                        
-                    </div>
                 </div>
                 
                 <script>
@@ -453,17 +545,23 @@
                             @guest
                                 @if (Route::has('login'))
                                     <div x-data="{ openLoginModalMobile: false }" class="grid sm:grid-cols-4 grid-cols-1 gap-4">
-                                        <div class=" col-1">
+                                        {{-- <div class=" col-1">
                                             <a class="w-auto focus:outline-none text-white font-somebold  bg-red-700 hover:bg-red-700 focus:ring-4 focus:ring-red-300 rounded-lg
                                                 text-sm px-4 py-2   dark:bg-red-700 dark:hover:bg-red-700 dark:focus:ring-red-700" @click="openLoginModalMobile = true">
                                                 {{ __('Log in') }}
                                             </a>
+                                        </div> --}}
+                                        <div class="px-3">
+                                            <a @click="openLoginModalMobile = true" class="-mx-3 block rounded-lg px-3 py-1 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">{{ __('Log in') }}</a>
                                         </div>
-                                        <div class=" col-1">
+                                        {{-- <div class=" col-1">
                                             <a class="w-auto focus:outline-none text-white bg-red-700 hover:bg-red-70 font-somebold0 focus:ring-4 focus:ring-red-300  rounded-lg
-                                                text-sm px-4 py-2  dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-700" {{-- href="{{ route('register') }}" --}}>
-                                                    Регистрация
+                                                text-sm px-4 py-2  dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-700" >
+                                                    {{ __('Register') }}
                                             </a>
+                                        </div> --}}
+                                        <div class="px-3">
+                                            <a class="-mx-3 block rounded-lg px-3 py-1 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50" {{-- href="{{ route('register') }}" --}}>{{ __('Register') }}</a>
                                         </div>
                                         <div x-show="openLoginModalMobile" x-transition x-cloak class="fixed inset-0 z-20" aria-labelledby="modal-title" aria-modal="true">
                                             <!-- Затемнение фона -->
@@ -611,14 +709,26 @@
                                     </div>
                                 @endif
                             @else
-                                @if (Auth::user()->hasAnyAccess(['platform.*'])) 
+                                {{-- @if (Auth::user()->hasAnyAccess(['platform.*'])) 
                                     <a href="{{ route('platform.index') }}" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Админка</a>
                                 @endif
                                 <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" 
                                     class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
                                     {{ __('Log out') }}
+                                </a> --}}
+
+                                <a href="{{ route('settings.general') }}" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">{{ Auth::user()->name }}</a>
+                                
+                                @if (Auth::user()->hasAnyAccess(['platform.*'])) 
+                                    <a href="{{ route('platform.index') }}" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Админка</a>
+                                @endif
+                                <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" 
+                                    class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
+                                            {{ __('Log out') }}
                                 </a>
                             @endguest
+
+                            
                             
                         </div>
                     </div>
@@ -689,7 +799,7 @@
                   
                 </nav>
                 
-                <p class="mt-10 text-center text-xs leading-5 text-gray-500">&copy; 2025 ООО "Волшебная страна". Все права защищены.</p>
+                <p class="mt-10 text-center text-xs leading-5 text-gray-500">&copy; 2025 "Волшебная страна"</p>
             </div>
         </footer> 
     </div>
