@@ -33,7 +33,7 @@
                 <div class="flex  xl:px-6  md:px-2">
                     <a href="/" class="-m-1.5 p-1.5">
                         <span class="sr-only">Волшебная страна</span>
-                        <img class="h-16 sm:h-18 w-auto" src="{{ asset('img/zr_tour_logo.svg') }}" alt="">
+                        <img class="h-16 sm:h-18 w-auto" src="{{ asset('img/zr_tour_logo_new.svg') }}" alt="">
                     </a>
                 </div>
                 <div class="flex lg:hidden">
@@ -467,7 +467,7 @@
                 <div class="fixed inset-y-0 right-0 z-20 w-full max-w-sm bg-white px-6 py-6 overflow-y-auto">
                     <div class="flex items-center justify-between">
                         <a href="/" class="-m-1.5 p-1.5">
-                            <img class="h-16 sm:h-18 w-auto" src="{{ asset('img/zr_tour_logo.svg') }}" alt="">
+                            <img class="h-16 sm:h-18 w-auto" src="{{ asset('img/zr_tour_logo_new.svg') }}" alt="">
                         </a>
                         <button @click="open = false" type="button" class="-m-2.5 rounded-md p-2.5 text-gray-700">
                             <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke="currentColor">
