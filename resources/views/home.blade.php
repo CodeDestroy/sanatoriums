@@ -44,13 +44,13 @@
 
         <!-- Кнопки (внутри контейнера, не выходят за экран) -->
         <div class="absolute inset-y-0 left-0 flex items-center pl-2">
-            <button id="prevBtn" style="width: 2rem; height: 2rem;" class="flex items-center bg-white border p-2 rounded-full shadow hover:bg-gray-100 z-10">
-                &#8592;
+            <button id="prevBtn" style="width: 2rem; height: 2rem;" class="flex items-center bg-white border p-3 rounded-full shadow hover:bg-gray-100 z-10">
+                &#60;
             </button>
         </div>
         <div class="absolute inset-y-0 right-0 flex items-center pr-2">
-            <button id="nextBtn" style="width: 2rem; height: 2rem;" class="flex items-center bg-white border p-2 rounded-full shadow hover:bg-gray-100 z-10">
-                &#8594;
+            <button id="nextBtn" style="width: 2rem; height: 2rem;" class="flex items-center bg-white border p-3 rounded-full shadow hover:bg-gray-100 z-10">
+                &#62;
             </button>
         </div>
     </div>
@@ -62,11 +62,11 @@
 </div> -->
 <div class="my-10">  
     <div class="w-full max-w-5xl mx-auto mt-10 px-2 ">
-        <div class="flex flex-col md:flex-row bg-white rounded-xl shadow-md overflow-hidden border border-gray-300">
+        <div class="flex flex-col md:flex-row bg-white  shadow-md overflow-hidden border border-gray-300 focus:ring-0">
           
           <!-- Название курорта или отеля -->
             <input type="text" placeholder="Название курорта или отеля"
-                  class="flex-1  py-3 text-sm text-gray-700 placeholder-gray-500 focus:outline-none border-b md:border-r border-gray-300 hover:border-red-800  focus:border-red-800"/>
+                  class="flex-1  py-3 text-sm text-gray-700 placeholder-gray-500 focus:ring-0 border-b md:border-r border-gray-300 hover:border-red-800  focus:border-red-800"/>
         
             <!-- Даты -->
             <div class="flex items-center px-4 py-3 text-sm text-gray-700 border-b  md:border-r border-gray-300 ">

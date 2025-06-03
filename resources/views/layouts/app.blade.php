@@ -29,7 +29,7 @@
 <body>
     <div id="app">
         <header class="bg-white" x-data="{ open: false, productOpen: false }" @keydown.window.escape="open = false; productOpen = false">
-            <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
+            <nav class="mx-auto flex max-w-6xl items-center justify-between p-6 lg:px-8" aria-label="Global">
                 <div class="flex  xl:px-6  md:px-2">
                     <a href="/" class="-m-1.5 p-1.5">
                         <span class="sr-only">Волшебная страна</span>
@@ -734,7 +734,7 @@
                     </div>
                 </div>
             </div>
-            <div class="my-5"> 
+         <!--   <div class="my-5"> 
                 <form class="max-w-5xl mx-auto hover:border-red-800  focus:border-red-800">   
                     <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white hover:border-red-800  focus:border-red-800">Поиск</label>
                     <div class="relative">
@@ -747,6 +747,191 @@
                         <button type="submit" class="text-white absolute end-2.5 bottom-2.5 bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-800 font-medium rounded-lg text-sm px-4 py-2  hover:border-red-800  focus:border-red-800">Поиск</button>
                     </div>
                 </form>
+            </div> -->
+            <div class="my-10">  
+                <div class="w-full max-w-5xl mx-auto mt-10 px-2 ">
+                    <div class="flex flex-col md:flex-row bg-white  shadow-md overflow-hidden border border-gray-300 focus:ring-0">
+                      
+                      <!-- Название курорта или отеля -->
+                        <input type="text" placeholder="Санаторий им.Горького" class="flex-1  py-3 text-sm text-gray-700 placeholder-gray-500 focus:ring-0 border-b md:border-r border-gray-300 hover:border-red-800  focus:border-red-800">
+                    
+                        <!-- Даты -->
+                        
+                        
+                            <!-- ====== Date range picker Section Start -->
+                            
+                            <!-- ====== Date range picker Section End -->
+            
+                            <script>
+                                const datepicker = document.getElementById("datepicker");
+                                const datepickerContainer = document.getElementById(
+                                "datepicker-container",
+                                );
+                                const daysContainer = document.getElementById("days-container");
+                                const currentMonthElement = document.getElementById("currentMonth");
+                                const prevMonthButton = document.getElementById("prevMonth");
+                                const nextMonthButton = document.getElementById("nextMonth");
+                                const cancelButton = document.getElementById("cancelButton");
+                                const applyButton = document.getElementById("applyButton");
+                                const toggleDatepicker = document.getElementById("toggleDatepicker");
+            
+                                let currentDate = new Date();
+                                let selectedStartDate = null;
+                                let selectedEndDate = null;
+            
+            
+                                // Function to render the calendar
+                                function renderCalendar() {
+                                const year = currentDate.getFullYear();
+                                const month = currentDate.getMonth();
+            
+                                // Update month display with current date (not static August 2023)
+                                currentMonthElement.textContent = currentDate.toLocaleDateString(
+                                    "en-US",
+                                    { month: "long", year: "numeric" },
+                                );
+            
+                                daysContainer.innerHTML = "";
+                                const firstDayOfMonth = new Date(year, month, 1).getDay();
+                                const daysInMonth = new Date(year, month + 1, 0).getDate();
+            
+                                for (let i = 0; i < firstDayOfMonth; i++) {
+                                    daysContainer.innerHTML += `<div></div>`;
+                                }
+            
+                                for (let i = 1; i <= daysInMonth; i++) {
+                                    const day = new Date(year, month, i);
+                                    const dayString = day.toLocaleDateString("en-US");
+            
+                                    let className =
+                                    "flex items-center justify-center cursor-pointer w-[46px] h-[46px] rounded-full text-dark-3 dark:text-dark-6 hover:bg-primary hover:text-white";
+            
+                                    // Highlight start and end dates
+                                    if (selectedStartDate && dayString === selectedStartDate) {
+                                    className +=
+                                        " bg-primary text-white dark:text-white rounded-r-none";
+                                    }
+                                    if (selectedEndDate && dayString === selectedEndDate) {
+                                    className +=
+                                        " bg-primary text-white dark:text-white rounded-l-none";
+                                    }
+            
+                                    // Highlight dates between start and end
+                                    if (
+                                    selectedStartDate &&
+                                    selectedEndDate &&
+                                    new Date(day) > new Date(selectedStartDate) &&
+                                    new Date(day) < new Date(selectedEndDate)
+                                    ) {
+                                    className += " bg-dark-3 text-white rounded-none"; // Add your custom class for the range
+                                    }
+            
+                                    daysContainer.innerHTML += `<div class="${className}" data-date="${dayString}">${i}</div>`;
+                                }
+            
+                                document.querySelectorAll("#days-container div").forEach((day) => {
+                                    if (day.dataset && day.dataset.date) {
+                                    day.addEventListener("click", function (event) {
+                                        event.stopPropagation(); // Prevent event from bubbling up to document
+            
+                                        const selectedDay = this.dataset.date;
+            
+                                        if (!selectedStartDate || (selectedStartDate && selectedEndDate)) {
+                                        selectedStartDate = selectedDay;
+                                        selectedEndDate = null;
+                                        } else {
+                                        if (new Date(selectedDay) < new Date(selectedStartDate)) {
+                                            selectedEndDate = selectedStartDate;
+                                            selectedStartDate = selectedDay;
+                                        } else {
+                                            selectedEndDate = selectedDay;
+                                        }
+                                        }
+            
+                                        updateInput();
+                                        renderCalendar(); // Re-render calendar to update highlighted range
+                                    });
+                                    }
+                                });
+                                }
+            
+                                // Function to update the datepicker input
+                                function updateInput() {
+                                if (selectedStartDate && selectedEndDate) {
+                                    datepicker.value = `${selectedStartDate} - ${selectedEndDate}`;
+                                } else if (selectedStartDate) {
+                                    datepicker.value = selectedStartDate;
+                                } else {
+                                    datepicker.value = "";
+                                }
+                                }
+            
+                                // Initialize calendar when page loads
+                                document.addEventListener("DOMContentLoaded", function () {
+                                renderCalendar();
+                                });
+            
+                                // Toggle datepicker visibility
+                                datepicker.addEventListener("click", function (event) {
+                                event.stopPropagation(); // Prevent click from bubbling up to document
+                                datepickerContainer.classList.toggle('hidden');
+                                if (!datepickerContainer.classList.contains('hidden')) {
+                                    renderCalendar();
+                                }
+                                });
+            
+                                toggleDatepicker.addEventListener("click", function (event) {
+                                event.stopPropagation(); // Prevent click from bubbling up to document
+                                datepickerContainer.classList.toggle('hidden');
+                                if (!datepickerContainer.classList.contains('hidden')) {
+                                    renderCalendar();
+                                }
+                                });
+            
+                                // Close datepicker when clicking outside
+                                document.addEventListener('click', function (event) {
+                                if (!datepickerContainer.contains(event.target) &&
+                                    event.target !== datepicker &&
+                                    event.target !== toggleDatepicker) {
+                                    datepickerContainer.classList.add('hidden');
+                                }
+                                });
+            
+                                // Navigate months
+                                prevMonthButton.addEventListener("click", function () {
+                                currentDate.setMonth(currentDate.getMonth() - 1);
+                                renderCalendar();
+                                });
+            
+                                nextMonthButton.addEventListener("click", function () {
+                                currentDate.setMonth(currentDate.getMonth() + 1);
+                                renderCalendar();
+                                });
+            
+                                // Cancel selection and close calendar
+                                cancelButton.addEventListener("click", function () {
+                                selectedStartDate = null;
+                                selectedEndDate = null;
+                                updateInput();
+                                datepickerContainer.classList.add('hidden');
+                                });
+            
+                                // Apply selection and close calendar
+                                applyButton.addEventListener("click", function () {
+                                updateInput();
+                                datepickerContainer.classList.add('hidden');
+                                });
+                            </script>
+                        
+                        <!-- Гости -->
+                        
+                    
+                        <!-- Кнопка -->
+                        <button class="bg-red-700 hover:bg-red-700 text-white text-sm font-medium px-6 py-3 w-full md:w-auto">
+                            Найти
+                        </button>
+                    </div>
+                </div>
             </div>
         </header>
         
