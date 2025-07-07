@@ -17,14 +17,14 @@
                                 grid-cols-1 
                                 sm:grid-cols-3 sm:grid-rows-3 sm:grid-flow-col">
                         <div class="sm:col-span-2 px-4 py-6 flex justify-center items-center"> 
-                            <p class="text-4xl font-bold tracking-tight text-mona-lisa-600 sm:text-4xl">Санаторий имени Горького</p>
+                            <p class="text-4xl font-bold tracking-tight text-mona-lisa-600 sm:text-4xl">Санаторий им. Дзержинского</p>
                         </div>
                         <div class="sm:col-span-2 sm:row-span-2  px-4 py-8 flex justify-center items-center">
                             <p class="text-xl text-salt-800 font-semibold py-2">
-                            текст  текст текст текст текст  текст текст текст текст текст текст текст текст
-                            текст текст текст текст текст текст текст текст текст текст </p>
+                                В 2022 году в санатории полностью модернизировали лечебный корпус, установив новейшее медицинское оборудование для диагностики и терапии.
+                                 Специалисты санатория разрабатывают индивидуальный план лечения для каждого гостя, чтобы обеспечить максимальную эффективность процедур. </p>
                         </div>
-                        <div class="sm:row-span-3 flex-shrink-0 content-center"><img class="h-60 sm:h-48 object-cover sm:object-none rounded-xl"  src="img/1234.jpg"></div>
+                        <div class="sm:row-span-3 flex-shrink-0 content-center"><img class="h-60 sm:h-48 object-cover sm:object-none rounded-xl"  src="img/0001.jpg"></div>
                     </div>
                 </div>
 
