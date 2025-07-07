@@ -6,20 +6,19 @@
       <div class="mx-auto max-w-7xl mt-12  px-6 lg:px-8">
         <ul role="list" class="space-y-3">
           
-          <li v-for="item in items" :key="item.id" class="overflow-hidden bg-white px-4 py-4 shadow sm:rounded-md sm:px-6">
+          <li v-for="item in items" :key="item.id" class="overflow-hidden bg-white  py-4 shadow sm:rounded-md">
               <a class="sm:inline-flex" :href="item.link">
               <div class="mb-4 flex-shrink-0 sm:mb-0 sm:mr-4">
-                <img class="h-60 sm:h-48 object-cover sm:object-none rounded-xl" :src="item.image">
+                <img class="h-60 sm:h-48  rounded-xl" :src="item.image">
               </div>
               <div>
-                <p class="text-slate-600 font-semibold">{{ item.datetime }}</p>
-                <p class="text-slate-600 font-semibold">{{ item.duration }}</p>
+                <p class="text-slate-600 font-semibold">с {{ item.date_start }}</p>
+                <p class="text-slate-600 font-semibold">{{ item.days }} дня</p>
                 
-                <p class="text-xl text-salt-800 font-semibold py-2">{{ item.theme }}</p>
-                <p class="text-slate-600 py-2">{{ item.comment }}</p>
-                <p class="text-slate-600">{{ item.target }}</p>
-                <p class="text-slate-400 line-through py-2">{{ item.oldcost }}</p>
-                <p class="text-mona-lisa-600">{{ item.cost }}</p>
+                <p class="text-xl text-salt-800 font-semibold py-2">{{ item.name }}</p>
+                <p class="text-slate-600 py-2" v-html="item.description"></p>
+                <p class="text-slate-400 line-through py-2">{{ item.price_old }}</p>
+                <p class="text-mona-lisa-600">{{ item.price_new }}</p>
               </div>
             </a>  
           </li>
@@ -28,8 +27,27 @@
       </div>
     </div>
   </template>
-  
-  <script setup>
+
+<script setup>
+import { ref, onMounted } from 'vue'
+const props = defineProps({
+  initialHits: Array,
+})
+
+const items = ref(props.initialHits.map(hit => ({
+  id: hit.id,
+  link: `/hit/${hit.id}`,
+  image: hit.images[0]?.image_path ?? 'img/default.jpg',
+  date_start: hit.date_start ?? '',
+  days: hit.days ?? '',
+  name: hit.name,
+  description: hit.description,
+  price_old: hit.price_old,
+  price_new: hit.price_new
+})))
+console.log(items)
+</script>  
+<!-- <script setup>
 import { comment } from 'postcss';
 
   const items = [
@@ -89,4 +107,4 @@ import { comment } from 'postcss';
       cost: '3500'
      },
   ]
-  </script>
+  </script> -->

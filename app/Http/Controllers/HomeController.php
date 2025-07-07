@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Event;
+use App\Models\Hits;
 class HomeController extends Controller
 {
     /**
@@ -28,7 +29,12 @@ class HomeController extends Controller
                 ->orderBy('start_time')
                 ->get(); */
         /* $events = Event::orderBy('start_date')->orderBy('start_time')->get(); */
-        return view('home');
+        $hits = Hits::with('images')->latest()->take(10)->get();
+        /* echo '<pre>';
+        print_r($hits);
+        echo '</pre>'; */
+        return view('home', ['hits' => $hits]);
+       // return view('home');
     }
 
     public function nikolaeva() 

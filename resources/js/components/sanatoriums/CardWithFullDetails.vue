@@ -81,14 +81,14 @@ const products = [
     id: 1,
     name: 'Санаторий им. Дзержинского ',
     href: '/sanatorium/1',
-    imageSrc: 'img/dzr.jpg',
+    imageSrc: '/img/dzr.jpg',
     imageAlt: "Санаторий им. Дзержинского",
     price: 'от 1100 ₽ за сутки',
     description: 'Описание санатория',
     region: 'Транспортная ул., 2, Чертовицы, Воронежская обл',
-    rating: 4 
+    rating: 5 
   },
-  {
+  /* {
     id: 2,
     name: 'Гостевой дом НЭСТА',
     href: '/sanatorium/1',
@@ -109,7 +109,7 @@ const products = [
     description: 'Описание санатория',
     region: 'Краснодарский край, Туапсинский район, п ...',
     rating: 4 
-  },
+  }, */
   // More products...
 ]
 </script>

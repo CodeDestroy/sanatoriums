@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
+use App\Models\Sanatorium;
 use Illuminate\Support\Facades\Log;
 use function GuzzleHttp\default_ca_bundle;
 use Illuminate\Support\Facades\DB;
@@ -18,7 +19,10 @@ class SanatoriumsController extends Controller
         $chapters = Chapter::where(['course_id' => $course_id])->with('themes')->get();
         $themes = Theme::where(['course_id' => $course_id])->get(); */
         /* return $course; */
-        return view('sanatoriums.index', /* compact('course', 'themes', 'chapters') */);
-        
+        //return view('sanatoriums.index', /* compact('course', 'themes', 'chapters') */);
+        $sanatorium = Sanatorium::with('descriptionBlocks', 'images')->findOrFail($sanatorium_id);
+        return view('sanatoriums.index', [
+            'sanatorium' => $sanatorium
+        ]);
     }
 }

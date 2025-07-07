@@ -497,8 +497,8 @@
 </div>
 
 <div id="hits">
-    <hits/>
-</div> 
+  <hits :initial-hits='@json($hits)'></hits>
+</div>
 
 
 <div class="bg-gray-100 py-24 sm:py-32"  id='dopObr'{{-- style="height: 100vh;" --}}>
@@ -583,20 +583,12 @@
                                     Подробнее
                                 </button>
     </div>
-  </div>
-
-
+</div>
 
 <div id="news">
     <news/>
 </div> 
 
-
-
-
-
-
-   <!-- JS -->
 <script>
     const carousel = document.querySelector('[data-slides]');
     const slides = carousel.children.length;
