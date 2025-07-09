@@ -34,7 +34,7 @@
             </div>
             <div class="mt-4 flex justify-between">
               <div>
-                <h3 class="text-md text-blue-700">
+                <h3 class="text-md text-red-600">
                   <a :href="product.href">
                     <span aria-hidden="true" class="absolute inset-0" />
                     {{ product.price }}
